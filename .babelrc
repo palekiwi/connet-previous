@@ -1,0 +1,8 @@
+{
+  "presets": ["babel-preset-gatsby"],
+  "plugins": [
+      ["react-intl", {
+          "messagesDir": "./dist/messages/"
+      }]
+    ]
+}

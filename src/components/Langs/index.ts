@@ -1,0 +1,1 @@
+export { LangsContainer } from "./LangsContainer";
