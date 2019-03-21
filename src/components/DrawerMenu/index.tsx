@@ -3,12 +3,13 @@ import { MakeMenu } from "../utils/MakeMenu";
 import { Drawer } from "../Drawer";
 import { MenuButton } from "./MenuButton";
 import { CloseButton } from "./CloseButton";
-import { styled, Flex, Text } from "primithemes";
+import { styled, Box, Flex, Text } from "primithemes";
 import { Button } from "../Button";
 import { Image } from "../Image";
 import { Link } from "../../i18n";
+import { Logo } from "src/components/Logo";
 
-const Logo = styled(Image)`
+const LogoImg = styled(Image)`
   margin: 0 auto;
 `;
 
@@ -42,11 +43,15 @@ const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo, title, navItems }) => {
               <Flex justifyContent="flex-end">
                 <CloseButton onClick={injected.handleClose} />
               </Flex>
-              {logo && (
+              {logo ? (
                 <Flex justifyContent="center" my={3}>
                   <Link to="/" onClick={injected.handleClose}>
-                    <Logo critical fixed={logo} />
+                    <LogoImg critical fixed={logo} />
                   </Link>
+                </Flex>
+              ) : (
+                <Flex justifyContent="center">
+                  <Logo width={140} />
                 </Flex>
               )}
               {title && (

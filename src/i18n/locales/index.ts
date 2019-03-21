@@ -10,7 +10,7 @@ interface Language {
 
 const languages: Language[] = [
   { code: "en", name: "English" },
-  { code: "zh", name: "中文" },
+  //{ code: "zh", name: "中文" },
 ];
 
 export { Language, languages, localeData };

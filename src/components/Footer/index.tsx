@@ -7,11 +7,7 @@ const Main = styled(Card)`
   overflow: hidden;
 `;
 
-const MainInner = styled(Flex)`
-  ${props => props.theme.devices[2]} {
-    flex-direction: row;
-  }
-`;
+const MainInner = styled(Flex)``;
 
 interface Props {
   logo?: any;
@@ -34,7 +30,7 @@ const Footer: React.SFC<Props> = ({ logo, title, phone, email, address }) => (
       <MainInner
         justifyContent="center"
         alignItems="center"
-        flexDirection="column"
+        flexDirection={["column", "column", "row"]}
       >
         {logo ? (
           <Flex style={{ opacity: 0.9 }} w={["220px"]}>
@@ -44,32 +40,32 @@ const Footer: React.SFC<Props> = ({ logo, title, phone, email, address }) => (
             />
           </Flex>
         ) : (
-          <Logo opacity={0.8} variant="dark" width={130} />
+          <Box mb={[2, 2, 0]}>
+            <Logo opacity={0.8} variant="dark" width={130} />
+          </Box>
         )}
         <Flex justifyContent="center" flexDirection="column">
-          <Text mb={3} color="primary.light" fontSize={3} fontWeight={5}>
+          <Text mb={3} color="grey.300" fontSize={3} fontWeight={5}>
             {title}
           </Text>
-          {
+          <Box color="grey.400">
             <Text
+              color="inherit"
               lineHeight={2}
-              color="white.main"
               fontSize={2}
               textAlign="center"
             >
               {phone}
             </Text>
-          }
-          {email && (
             <Text
+              color="inherit"
               lineHeight={2}
-              color="white.main"
               fontSize={2}
               textAlign="center"
             >
               {email}
             </Text>
-          )}
+          </Box>
         </Flex>
       </MainInner>
     </Main>
