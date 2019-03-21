@@ -1,11 +1,11 @@
 import * as React from "react";
-//import { navigate } from "gatsby";
 import {
   styled,
   css,
   Button as Base,
   ButtonProps as BaseProps,
 } from "primithemes";
+import { Link } from "../../i18n";
 
 interface ButtonProps extends BaseProps {
   to?: string;
@@ -15,9 +15,10 @@ interface ButtonProps extends BaseProps {
   outlined?: boolean;
   small?: boolean;
   large?: boolean;
+  onClick?(): void;
 }
 
-const FilteredButton: React.SFC<ButtonProps> = ({
+const ButtonLink: React.SFC<ButtonProps> = ({
   to,
   contained,
   outlined,
@@ -27,11 +28,13 @@ const FilteredButton: React.SFC<ButtonProps> = ({
   variant,
   ...props
 }) => {
+  if (to) return <Base as={Link} to={to} {...props} />;
   return <Base {...props} />;
 };
 
 const defaultStyle = css<ButtonProps>`
   font-family: ${props => props.theme.fonts.sans};
+  display: inline-block;
   border: ${props => props.theme.borders[1]};
   border-color: transparent;
   border-radius: ${props => props.theme.radii[2]};
@@ -59,7 +62,7 @@ const defaultStyle = css<ButtonProps>`
       }
       &:focus {
         outline: none;
-        background: ${props.theme.colors.divider.light};
+        background: ${props.theme.colors.divider.main};
       }
     `}
   ${props =>
@@ -77,7 +80,7 @@ const defaultStyle = css<ButtonProps>`
 const primary = css<ButtonProps>`
   color: ${props => props.theme.colors.primary.main};
   &:hover {
-    background: ${props => props.theme.colors.divider.light};
+    background: ${props => props.theme.colors.divider.dark};
     color: ${props => props.theme.colors.primary.dark};
   }
   &:focus {
@@ -135,7 +138,7 @@ const secondary = css<ButtonProps>`
     css`
       border-color: ${props.theme.colors.secondary.main};
       background: ${props.theme.colors.secondary.main};
-      color: ${props.theme.colors.white.main};
+      color: ${props.theme.colors.white.light};
       &:hover {
         background: ${props.theme.colors.secondary.light};
         color: ${props.theme.colors.white.main};
@@ -190,12 +193,14 @@ const large = css<ButtonProps>`
 `;
 
 const round = css<ButtonProps>`
-  padding: ${props => props.theme.sizes[2]};
+  padding: 0;
   text-align: center;
   border-radius: 50%;
+  width: 48px;
+  height: 48px;
 `;
 
-const Button = styled(FilteredButton)<ButtonProps>`
+const Button = styled(ButtonLink)<ButtonProps>`
   ${defaultStyle}
   ${props => props.variant === "primary" && primary}
   ${props => props.variant === "secondary" && secondary}

@@ -2,7 +2,7 @@ import * as React from "react";
 import { DrawerMenu } from "src/components/DrawerMenu";
 import { styled, Card, Box, Flex, Text } from "primithemes";
 import { Button } from "src/components/Button";
-import { Link } from "src/i18n";
+import { Link } from "src/components/Link";
 import { Container } from "src/components/Container";
 import { Logo } from "src/components/Logo";
 import Headroom from "react-headroom";
