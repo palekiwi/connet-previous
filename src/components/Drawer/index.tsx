@@ -1,13 +1,11 @@
 import * as React from "react";
 import styled from "styled-components";
-import { Transition } from "react-spring";
+import { animated, useTransition } from "react-spring";
 
 interface DrawerProps {
   anchor: "left" | "right" | "top" | "bottom";
   width: number;
-  open: boolean;
-  handleClose(): void;
-  toggleMenu(): void;
+  children({ toggle: any }): any;
 }
 
 const DrawerWrapper = styled.div<{ width: number }>`
@@ -38,42 +36,25 @@ const DrawerContent = styled.div`
   overflow-x: hidden;
 `;
 
-interface State {
-  animating: boolean;
-}
-
-class Drawer extends React.Component<DrawerProps, State> {
-  state: State = { animating: false };
-
-  render() {
-    const { width, open, handleClose, children } = this.props;
-    return (
-      <>
-        <Transition
-          items={open}
-          from={{ transform: "translate3d(300px,0,0)", opacity: 0 }}
-          enter={{ transform: "translate3d(0,0,0)", opacity: 1 }}
-          leave={{ transform: "translate3d(300px,0,0)", opacity: 0 }}
-        >
-          {open => props =>
-            open && (
-              <>
-                <DrawerOverlay
-                  style={{ opacity: props.opacity }}
-                  onClick={handleClose}
-                />
-                <DrawerWrapper
-                  width={width}
-                  style={{ transform: props.transform }}
-                >
-                  <DrawerContent>{children}</DrawerContent>
-                </DrawerWrapper>
-              </>
-            )}
-        </Transition>
-      </>
-    );
-  }
-}
+const Drawer: React.SFC<DrawerProps> = props => {
+  const { width, children } = props;
+  const [show, set] = React.useState(true);
+  const transitions = useTransition(show, null, {
+    from: { transform: "translate3d(300px,0,0)", opacity: 0 },
+    enter: { transform: "translate3d(0,0,0)", opacity: 1 },
+    leave: { transform: "translate3d(300px,0,0)", opacity: 0 },
+  });
+  return transitions.map(
+    ({ item, key, props }) =>
+      item && (
+        <animated.div style={props}>
+          <DrawerOverlay onClick={() => set(false)} />
+          <DrawerWrapper width={width}>
+            <DrawerContent>{children({ toggle: set })}</DrawerContent>
+          </DrawerWrapper>
+        </animated.div>
+      )
+  );
+};
 
 export { Drawer };

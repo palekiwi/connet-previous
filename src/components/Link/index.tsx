@@ -1,6 +1,19 @@
-import { Link as Base } from "../../i18n";
-import { styled } from "primithemes";
+import { Link as BaseLink } from "../../i18n";
+import { css, styled, TextProps } from "primithemes";
 
-const Link = styled(Base)``;
+interface Props extends TextProps {
+  to: string;
+  styled?: boolean;
+  onClick?(): void;
+}
 
-export { Link };
+export const Link = styled(BaseLink)<Props>`
+  ${props =>
+    props.styled &&
+    css`
+      color: ${props => props.theme.colors.secondary.light};
+      &:hover {
+        color: ${props => props.theme.colors.secondary.dark};
+      }
+    `};
+`;
