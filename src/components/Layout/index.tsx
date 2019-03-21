@@ -3,16 +3,13 @@ import { StaticQuery, graphql } from "gatsby";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { Flex, styled } from "primithemes";
 import { theme } from "../../theme";
-import { injectIntl, InjectedIntlProps } from "react-intl";
+import { FormattedMessage, injectIntl, InjectedIntlProps } from "react-intl";
 import { Header } from "src/components/Header";
-import { UnderConstruction } from "src/components/UnderConstruction";
 import { nav as navMessages } from "./Layout.messages";
-import { FormattedMessage } from "react-intl";
 
 import { Normalize } from "styled-normalize";
 import { Head } from "./Head";
-import { Footer } from "./Footer";
-import { Policy } from "src/components/Policy";
+import { Footer } from "src/components/Footer";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -70,7 +67,11 @@ interface Data {
   logoWhite: any;
 }
 
-const nav = [{ to: "/services", label: "services" }];
+const nav = [
+  { to: "/services", label: <FormattedMessage {...navMessages.services} /> },
+  { to: "/contact", label: <FormattedMessage {...navMessages.contact} /> },
+  { to: "/about", label: <FormattedMessage {...navMessages.about} /> },
+];
 
 export const BaseLayout: React.SFC<InjectedIntlProps> = ({
   children,
@@ -110,7 +111,6 @@ export const BaseLayout: React.SFC<InjectedIntlProps> = ({
             <Head title={settings.node.frontmatter.title} />
             <Content bg="background.main">
               <Header
-                topbar
                 title={settings.node.frontmatter.title}
                 navItems={nav}
                 logo={null}

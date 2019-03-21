@@ -28,14 +28,24 @@ interface Props {
         title: string;
         subtitle: string;
         image: any;
-        welcomeSection: {
-          title: string;
-          body: string;
-        };
-        servicesSection: {
-          title: string;
-          body: string;
-        };
+      };
+    };
+    welcomeSection: {
+      frontmatter: {
+        title: string;
+        subtitle: string;
+      };
+      html: string;
+    };
+    servicesSection: {
+      frontmatter: {
+        title: string;
+        subtitle: string;
+      };
+      html: string;
+    };
+    companyFacts: {
+      frontmatter: {
         facts: { title: string; value: string }[];
       };
     };
@@ -45,7 +55,9 @@ interface Props {
   };
 }
 
-const IndexPage: React.SFC<Props> = ({ data: { content, services } }) => {
+const IndexPage: React.SFC<Props> = ({
+  data: { content, welcomeSection, servicesSection, companyFacts, services },
+}) => {
   return (
     <Layout>
       <Banner
@@ -54,9 +66,9 @@ const IndexPage: React.SFC<Props> = ({ data: { content, services } }) => {
       />
       <Box bg="background.light">
         <AboutSummary
-          title={content.frontmatter.welcomeSection.title}
-          body={content.frontmatter.welcomeSection.body}
-          highlights={content.frontmatter.facts.map(f => ({
+          title={welcomeSection.frontmatter.title}
+          markdown={welcomeSection.html}
+          highlights={companyFacts.frontmatter.facts.map(f => ({
             title: f.value,
             subtitle: f.title,
           }))}
@@ -64,8 +76,8 @@ const IndexPage: React.SFC<Props> = ({ data: { content, services } }) => {
       </Box>
       <Box>
         <Categories
-          title={content.frontmatter.servicesSection.title}
-          body={content.frontmatter.servicesSection.body}
+          title={servicesSection.frontmatter.title}
+          markdown={servicesSection.html}
           categoryLinks={services.edges.map(({ node }) => ({
             label: node.frontmatter.title,
             text: node.frontmatter.subtitle,
@@ -96,19 +108,36 @@ export const query = graphql`
             }
           }
         }
-        welcomeSection {
-          title
-          body
-        }
-        servicesSection {
-          title
-          body
-        }
+      }
+      html
+    }
+    welcomeSection: markdownRemark(
+      fields: { lang: { eq: $locale }, pageName: { eq: "welcome-section" } }
+    ) {
+      frontmatter {
+        title
+        subtitle
+      }
+      html
+    }
+    companyFacts: markdownRemark(
+      fields: { lang: { eq: $locale }, pageName: { eq: "company-facts" } }
+    ) {
+      frontmatter {
         facts {
           title
           value
         }
       }
+    }
+    servicesSection: markdownRemark(
+      fields: { lang: { eq: $locale }, pageName: { eq: "services" } }
+    ) {
+      frontmatter {
+        title
+        subtitle
+      }
+      html
     }
     services: allMarkdownRemark(
       filter: {

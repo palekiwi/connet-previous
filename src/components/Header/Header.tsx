@@ -4,6 +4,7 @@ import { styled, Card, Box, Flex, Text } from "primithemes";
 import { Button } from "src/components/Button";
 import { Link } from "src/i18n";
 import { Container } from "src/components/Container";
+import { Logo } from "src/components/Logo";
 import Headroom from "react-headroom";
 import { TopBar } from "./TopBar";
 
@@ -70,10 +71,12 @@ export const Header: React.SFC<HeaderProps> = ({
           >
             <Link to="/">
               <Brand alignItems="center">
-                {logo && (
+                {logo ? (
                   <LogoWrapper alignItems="center">
                     <LogoImg src={logo.childImageSharp.fixed.src} />
                   </LogoWrapper>
+                ) : (
+                  <Logo width={60} variant="mono" opacity={0.9} />
                 )}
                 <BrandName
                   display={["none", "none", "none", "block"]}
