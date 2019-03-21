@@ -41,7 +41,7 @@ const Footer: React.SFC<Props> = ({ logo, title, phone, email, address }) => (
           </Flex>
         ) : (
           <Box mb={[2, 2, 0]}>
-            <Logo opacity={0.8} variant="dark" width={130} />
+            <Logo opacity={0.6} variant="dark" width={130} />
           </Box>
         )}
         <Flex justifyContent="center" flexDirection="column">
