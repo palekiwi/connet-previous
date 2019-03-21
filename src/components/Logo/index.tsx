@@ -1,5 +1,6 @@
 import * as React from "react";
 import { css, styled } from "primithemes";
+import { darken } from "src/utils/helpers";
 
 interface Props {
   variant?: "mono";
@@ -12,13 +13,13 @@ const original = css`
     opacity: 1;
   }
   & #text-main {
-    fill: #00a0e9;
+    fill: ${props => props.theme.colors.primary.main};
   }
   & #text-shadow {
-    fill: #005aab;
+    fill: ${props => darken(props.theme.colors.primary.main)(1.3)};
   }
   & #elipse {
-    fill: #f08300;
+    fill: ${props => props.theme.colors.secondary.main};
   }
 `;
 const mono = css`
@@ -37,14 +38,12 @@ const mono = css`
 `;
 
 const Svg = styled.svg<Props>`
+  ${original};
   opacity: ${props => props.opacity};
   & * {
     transition: all 400ms ease-out;
   }
   ${props => props.variant === "mono" && mono}
-  &: hover {
-    ${original}
-  }
 `;
 
 export const Logo: React.SFC<Props> = ({ variant, opacity, width }) => (
@@ -57,6 +56,17 @@ export const Logo: React.SFC<Props> = ({ variant, opacity, width }) => (
     viewBox="0 0 100 54.75"
     id="svg8"
   >
+    <filter id="dropshadow" height="130%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+      <feOffset dx="-2" dy="6" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.8" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
     <g id="logo">
       <path
         id="elipse"
