@@ -68,9 +68,6 @@ const Svg = styled.svg<Props>`
   }
   ${props => props.variant === "light" && light}
   ${props => props.variant === "dark" && dark}
-  &:hover {
-    opacity: 0.8;
-  }
 `;
 
 export const Logo: React.SFC<Props> = ({ variant, opacity, width }) => (
