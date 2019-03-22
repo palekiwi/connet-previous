@@ -16,7 +16,7 @@ const useToggle = () => {
 
 const useKeyDown = (show: boolean, close: () => void) => {
   useEffect(() => {
-    const handler = e => {
+    const handler = (e: any) => {
       if (e.keyCode === 27) close();
     };
     if (show) document.body.addEventListener("keydown", handler);

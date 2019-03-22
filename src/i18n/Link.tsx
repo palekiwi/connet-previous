@@ -5,6 +5,7 @@ import { Link } from "gatsby";
 export interface I18nLinkProps extends InjectedIntlProps {
   to: string;
   className?: string;
+  activeStyle?: object;
 }
 
 export const I18nLink: React.SFC<I18nLinkProps> = ({
