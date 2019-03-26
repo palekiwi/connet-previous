@@ -56,10 +56,10 @@ const ServicesPage: React.SFC<ServicesProps> = ({
               key={i}
               w={1}
               flexWrap="wrap"
-              flexDirection={i % 2 === 0 ? "row" : "row-reverse"}
-              bg="background.light"
+              flexDirection={"row"}
+              bg="linear-gradient(30deg, transparent, hsl(0,0%,93%))"
             >
-              <Flex w={[1, 1 / 2]}>
+              <Flex w={[1, 1, 1 / 2]}>
                 <Image
                   style={{ width: "100%" }}
                   fluid={node.frontmatter.image}
@@ -67,7 +67,7 @@ const ServicesPage: React.SFC<ServicesProps> = ({
               </Flex>
               <Flex
                 p={4}
-                w={[1, 1 / 2]}
+                w={[1, 1, 1 / 2]}
                 flexDirection="column"
                 alignItems="center"
                 justifyContent="center"
@@ -75,23 +75,23 @@ const ServicesPage: React.SFC<ServicesProps> = ({
                 <Text
                   mb={2}
                   is="h2"
-                  fontSize={[4, 5]}
-                  color="primary.main"
-                  fontWeight={2}
+                  fontSize={[5, 5, 6]}
+                  color="text.dark"
+                  fontWeight={5}
                 >
                   {node.frontmatter.title}
                 </Text>
                 <Text
                   mb={3}
-                  fontSize={2}
+                  fontSize={3}
                   is="h5"
-                  fontWeight={3}
-                  color="text.primary"
+                  fontWeight={2}
+                  color="text.main"
                 >
                   {node.frontmatter.subtitle}
                 </Text>
                 <Link to={node.fields.slug}>
-                  <Button mt={2} outlined>
+                  <Button mt={2} variant="primary" contained>
                     Learn More
                   </Button>
                 </Link>

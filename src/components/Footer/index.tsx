@@ -31,6 +31,7 @@ const Footer: React.SFC<Props> = ({ logo, title, phone, email, address }) => (
         justifyContent="center"
         alignItems="center"
         flexDirection={["column", "column", "row"]}
+        py={3}
       >
         {logo ? (
           <Flex style={{ opacity: 0.9 }} w={["220px"]}>
