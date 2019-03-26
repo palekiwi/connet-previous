@@ -40,12 +40,12 @@ const Footer: React.SFC<Props> = ({ logo, title, phone, email, address }) => (
             />
           </Flex>
         ) : (
-          <Box mb={[2, 2, 0]}>
-            <Logo opacity={0.6} variant="dark" width={130} />
+          <Box mr={[0, 0, 4]} mb={[2, 2, 0]}>
+            <Logo opacity={0.9} variant="light" width={130} />
           </Box>
         )}
         <Flex justifyContent="center" flexDirection="column">
-          <Text mb={3} color="grey.300" fontSize={3} fontWeight={5}>
+          <Text mb={2} color="grey.300" fontSize={3} fontWeight={5}>
             {title}
           </Text>
           <Box color="grey.400">
@@ -53,7 +53,7 @@ const Footer: React.SFC<Props> = ({ logo, title, phone, email, address }) => (
               color="inherit"
               lineHeight={2}
               fontSize={2}
-              textAlign="center"
+              textAlign={["center", "center", "left"]}
             >
               {phone}
             </Text>
@@ -61,7 +61,7 @@ const Footer: React.SFC<Props> = ({ logo, title, phone, email, address }) => (
               color="inherit"
               lineHeight={2}
               fontSize={2}
-              textAlign="center"
+              textAlign={["center", "center", "left"]}
             >
               {email}
             </Text>
