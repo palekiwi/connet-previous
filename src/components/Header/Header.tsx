@@ -85,7 +85,9 @@ export const Header: React.SFC<HeaderProps> = ({
                 <BrandName
                   display={["none", "none", "none", "block"]}
                   fontSize={3}
+                  fontWeight={4}
                   ml={3}
+                  color="text.dark"
                 >
                   {title}
                 </BrandName>
@@ -94,7 +96,7 @@ export const Header: React.SFC<HeaderProps> = ({
             <Flex>
               <Nav>
                 {navItems.map(x => (
-                  <Button ml={1} to={x.to} key={x.to}>
+                  <Button fontSize={2} ml={1} to={x.to} key={x.to}>
                     {x.label}
                   </Button>
                 ))}

@@ -3,12 +3,21 @@ import { graphql } from "gatsby";
 import { Layout } from "../components/Layout";
 import { withIntl } from "../i18n";
 import { Image } from "../components/Image";
-import { Flex, Text } from "primithemes";
+import { styled, Flex, Text } from "primithemes";
 import { Button } from "../components/Button";
 import { Link } from "../components/Link";
 import { Section } from "../components/Section";
 import { Banner } from "../components/Banner";
 import { Container } from "../components/Container";
+
+const Img = styled(Image)`
+  ${props => props.theme.devices[0]} {
+    max-height: 300px;
+  }
+  ${props => props.theme.devices[2]} {
+    max-height: 100%;
+  }
+`;
 
 interface ServiceNode {
   node: {
@@ -57,13 +66,10 @@ const ServicesPage: React.SFC<ServicesProps> = ({
               w={1}
               flexWrap="wrap"
               flexDirection={"row"}
-              bg="linear-gradient(30deg, transparent, hsl(0,0%,93%))"
+              bg="linear-gradient(30deg, hsl(0,0%,100%), hsl(0,0%,93%))"
             >
               <Flex w={[1, 1, 1 / 2]}>
-                <Image
-                  style={{ width: "100%" }}
-                  fluid={node.frontmatter.image}
-                />
+                <Img style={{ width: "100%" }} fluid={node.frontmatter.image} />
               </Flex>
               <Flex
                 p={4}
@@ -75,7 +81,7 @@ const ServicesPage: React.SFC<ServicesProps> = ({
                 <Text
                   mb={2}
                   is="h2"
-                  fontSize={[5, 5, 6]}
+                  fontSize={[5, 5, 5, 6]}
                   color="text.dark"
                   fontWeight={5}
                 >

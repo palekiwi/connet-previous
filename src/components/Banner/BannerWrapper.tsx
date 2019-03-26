@@ -7,8 +7,8 @@ const Wrapper = styled(Card)`
   overflow: hidden;
   min-height: 240px;
   ${props => props.theme.devices[2]} {
-    min-height: 400px;
-    max-height: 500px;
+    min-height: 500px;
+    max-height: 600px;
   }
 `;
 
