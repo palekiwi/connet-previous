@@ -9,6 +9,7 @@ import { Phone } from "styled-icons/material/Phone";
 import { Email } from "styled-icons/material/Email";
 import { Home } from "styled-icons/material/Home";
 import { Banner } from "src/components/Banner";
+import sc from "styled-components";
 
 interface ContactNode {
   name: string;
@@ -28,15 +29,15 @@ const icon = css`
   border-color: ${props => props.theme.colors.divider.main};
 `;
 
-const PhoneIcon = styled(Phone)`
+const PhoneIcon = sc(Phone)`
   ${icon}
 `;
 
-const EmailIcon = styled(Email)`
+const EmailIcon = sc(Email)`
   ${icon}
 `;
 
-const AddressIcon = styled(Home)`
+const AddressIcon = sc(Home)`
   ${icon}
 `;
 

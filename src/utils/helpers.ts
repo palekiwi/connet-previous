@@ -1,14 +1,8 @@
-import chroma from "chroma-js";
+import { darken as d, lighten as l } from "polished";
 import { isNil, always, ifElse, contains } from "ramda";
 
-export const darken = (color: string) => (v: number) =>
-  chroma(color)
-    .darken(v)
-    .hex();
-export const lighten = (color: string) => (v: number) =>
-  chroma(color)
-    .brighten(v)
-    .hex();
+export const darken = (color: string) => (v: number) => d(v, color);
+export const lighten = (color: string) => (v: number) => l(v, color);
 
 export const safeIncludes = (x: any, y: any[] | undefined) =>
   ifElse(isNil, always(false), contains(x))(y);

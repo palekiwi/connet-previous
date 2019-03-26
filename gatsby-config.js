@@ -79,10 +79,17 @@ module.exports = {
         {
           resolve: "gatsby-remark-images",
           options: {
-            maxWidth: 1400,
+            maxWidth: 768,
           },
         },
       ],
+    },
+    {
+      resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+      options: {
+        analyzerMode: "server",
+        analyzerPort: "3001",
+      },
     },
   ],
 };

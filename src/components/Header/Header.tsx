@@ -1,7 +1,6 @@
 import * as React from "react";
 import { DrawerMenu } from "src/components/DrawerMenu";
 import { styled, Card, Box, Flex, Text } from "primithemes";
-import { Button } from "src/components/Button";
 import { Link } from "src/components/Link";
 import { Container } from "src/components/Container";
 import { Logo } from "src/components/Logo";
@@ -23,7 +22,7 @@ const Nav = styled(Flex)`
 `;
 
 export const Wrapper = styled(Card)`
-  z-index: ${props => props.theme.zIndexes[5]};
+  z-index: 5;
 `;
 
 export const Brand = styled(Flex)`
