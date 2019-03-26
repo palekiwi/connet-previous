@@ -6,6 +6,7 @@ import { Flex } from "primithemes";
 import { Banner } from "../components/Banner";
 import { Section, SectionHeader } from "../components/Section";
 import { Content } from "src/components/Content";
+import { Container } from "src/components/Container";
 
 interface ServicesTemplateProps {
   data: {
@@ -23,9 +24,11 @@ const ServicesTemplate: React.SFC<ServicesTemplateProps> = ({ data }) => {
       />
       <Section>
         <SectionHeader title={service.frontmatter.subtitle} />
-        <Flex p={3} w={1}>
-          <Content dangerouslySetInnerHTML={{ __html: service.html }} />
-        </Flex>
+        <Container>
+          <Flex p={3} w={1}>
+            <Content dangerouslySetInnerHTML={{ __html: service.html }} />
+          </Flex>
+        </Container>
       </Section>
     </Layout>
   );

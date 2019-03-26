@@ -1,6 +1,7 @@
 import { styled, Box } from "primithemes";
 
 export const Content = styled(Box)`
+  width: 100%;
   overflow: auto;
   box-sizing: border-box;
   font-family: ${props => props.theme.fonts.sans};
@@ -43,5 +44,12 @@ export const Content = styled(Box)`
     font-size: ${props => props.theme.fontSizes[2]};
     margin-top: ${props => props.theme.sizes[3]};
     margin-bottom: ${props => props.theme.sizes[2]};
+  }
+  img {
+    display: block;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+    max-width: 768px;
   }
 `;

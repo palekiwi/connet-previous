@@ -79,51 +79,64 @@ const ContactPage: React.SFC<Props> = ({ data: { content } }) => {
                       {c.name}
                     </Text>
                   </Box>
-                  <Flex
-                    p={3}
-                    flexDirection={["column", "column", "row"]}
-                    justifyContent={["center", "center", "space-around"]}
-                    alignItems={"center"}
-                  >
-                    {c.phone && (
-                      <Card my={2} p={3} flexDirection="row">
-                        <PhoneIcon size={26} />
-                        <Card bl={1} ml={3} pl={3} borderColor="divider.main">
-                          <Text>{c.phone}</Text>
+                  <Flex justifyContent="center">
+                    <Flex
+                      w={["auto", "auto", "auto", "100%"]}
+                      p={3}
+                      flexDirection={["column", "column", "column", "row"]}
+                      justifyContent={[
+                        "center",
+                        "center",
+                        "center",
+                        "space-around",
+                      ]}
+                      alignItems={[
+                        "flex-start",
+                        "flex-start",
+                        "flex-start",
+                        "center",
+                      ]}
+                    >
+                      {c.phone && (
+                        <Card my={2} p={3} flexDirection="row">
+                          <PhoneIcon size={26} />
+                          <Card bl={1} ml={3} pl={3} borderColor="divider.main">
+                            <Text>{c.phone}</Text>
+                          </Card>
                         </Card>
-                      </Card>
-                    )}
-                    {c.email && (
-                      <Card
-                        my={2}
-                        p={3}
-                        alignItems="center"
-                        flexDirection="row"
-                        justifyContent="center"
-                      >
-                        <EmailIcon size={26} />
-                        <Card bl={1} ml={3} pl={3} borderColor="divider.main">
-                          <Text>{c.email}</Text>
+                      )}
+                      {c.email && (
+                        <Card
+                          my={2}
+                          p={3}
+                          alignItems="center"
+                          flexDirection="row"
+                          justifyContent="center"
+                        >
+                          <EmailIcon size={26} />
+                          <Card bl={1} ml={3} pl={3} borderColor="divider.main">
+                            <Text>{c.email}</Text>
+                          </Card>
                         </Card>
-                      </Card>
-                    )}
-                    {c.address && (
-                      <Card
-                        my={2}
-                        p={3}
-                        alignItems="center"
-                        flexDirection="row"
-                        justifyContent="center"
-                      >
-                        <AddressIcon size={26} />
-                        <Card bl={1} ml={3} pl={3} borderColor="divider.main">
-                          <Text>{c.address.street}</Text>
-                          <Text>{c.address.district}</Text>
-                          <Text>{c.address.city}</Text>
-                          <Text>{c.address.country}</Text>
+                      )}
+                      {c.address && (
+                        <Card
+                          my={2}
+                          p={3}
+                          alignItems="center"
+                          flexDirection="row"
+                          justifyContent="center"
+                        >
+                          <AddressIcon size={26} />
+                          <Card bl={1} ml={3} pl={3} borderColor="divider.main">
+                            <Text>{c.address.street}</Text>
+                            <Text>{c.address.district}</Text>
+                            <Text>{c.address.city}</Text>
+                            <Text>{c.address.country}</Text>
+                          </Card>
                         </Card>
-                      </Card>
-                    )}
+                      )}
+                    </Flex>
                   </Flex>
                 </ContactCard>
               </Box>
