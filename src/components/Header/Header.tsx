@@ -2,6 +2,7 @@ import * as React from "react";
 import { DrawerMenu } from "src/components/DrawerMenu";
 import { styled, Card, Box, Flex, Text } from "primithemes";
 import { Link } from "src/components/Link";
+import { Button } from "src/components/Button";
 import { Container } from "src/components/Container";
 import { Logo } from "src/components/Logo";
 import Headroom from "react-headroom";
@@ -93,9 +94,9 @@ export const Header: React.SFC<HeaderProps> = ({
             <Flex>
               <Nav>
                 {navItems.map(x => (
-                  <Link ml={1} to={x.to} key={x.to}>
-                    <Text>{x.label}</Text>
-                  </Link>
+                  <Button ml={1} to={x.to} key={x.to}>
+                    {x.label}
+                  </Button>
                 ))}
               </Nav>
               <Trigger>

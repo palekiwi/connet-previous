@@ -5,6 +5,7 @@ interface Props extends TextProps {
   to: string;
   styled?: boolean;
   onClick?(): void;
+  children: any;
 }
 
 export const Link = styled(BaseLink)<Props>`
