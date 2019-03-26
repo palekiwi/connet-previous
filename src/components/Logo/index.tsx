@@ -13,7 +13,7 @@ const original = css`
     fill: ${props => props.theme.colors.primary.main};
   }
   & #text-shadow {
-    fill: ${props => darken(props.theme.colors.primary.main)(1.3)};
+    fill: ${props => darken(props.theme.colors.primary.main)(0.2)};
     opacity: 1;
   }
   & #elipse-full {

@@ -29,9 +29,6 @@ export const Wrapper = styled(Card)`
 export const Brand = styled(Flex)`
   transition: all 400ms ease-out;
   cursor: pointer;
-  &:hover {
-    opacity: 0.6;
-  }
 `;
 
 export const LogoWrapper = styled(Flex)``;
