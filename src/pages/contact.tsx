@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { Layout } from "../components/Layout";
 import { withIntl } from "../i18n/withIntl";
 import { css, styled, Box, Flex, Card } from "primithemes";
-import { Text } from "../components/Text";
+import { Text } from "src/components/Text";
 import { Container } from "../components/Container";
 import { Phone } from "styled-icons/material/Phone";
 import { Email } from "styled-icons/material/Email";
@@ -75,7 +75,12 @@ const ContactPage: React.SFC<Props> = ({ data: { content } }) => {
               <Box w={1} p={[0, 0, 3]} key={c.name}>
                 <ContactCard radius={[0, 0, 2]} shadow={[0, 0, 1]}>
                   <Box bg="grey.200" p={3}>
-                    <Text is="h2" color="text.dark" textAlign="center">
+                    <Text
+                      fontSize={4}
+                      fontWeight={3}
+                      color="text.main"
+                      textAlign="center"
+                    >
                       {c.name}
                     </Text>
                   </Box>
