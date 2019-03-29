@@ -10,7 +10,7 @@ const HeadBase: React.SFC<Props & InjectedIntlProps> = ({ intl, title }) => (
   <Helmet
     title={title}
     htmlAttributes={{ lang: intl.locale }}
-    meta={[{ name: "description", content: "Valen International" }]}
+    meta={[{ name: "description", content: title }]}
     link={[
       {
         rel: "stylesheet",
