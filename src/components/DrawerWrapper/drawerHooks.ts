@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 import { useTransition } from "react-spring";
+import {
+  enableBodyScroll,
+  disableBodyScroll,
+  BodyScrollOptions,
+} from "body-scroll-lock";
 
 const useToggle = () => {
   const [show, set] = useState(false);
@@ -26,8 +31,10 @@ const useKeyDown = (show: boolean, close: () => void) => {
 };
 
 const useDisableBodyScroll = (show: boolean) => {
+  const options: BodyScrollOptions = { reserveScrollBarGap: true };
   useEffect(() => {
-    document.body.style.overflowY = show ? "hidden" : "scroll";
+    if (show) disableBodyScroll(document.body, options);
+    else enableBodyScroll(document.body);
   }, [show]);
 };
 
@@ -38,7 +45,7 @@ export const useDrawer = () => {
   return { show, open, close };
 };
 
-export const useSlide = (show, width: string) => {
+export const useSlide = (show: boolean, width: string) => {
   const drawer = useTransition(show, null, {
     from: { transform: `translate3d(${width},0,0)` },
     enter: { transform: `translate3d(0,0,0)` },
@@ -48,7 +55,7 @@ export const useSlide = (show, width: string) => {
   return { drawer };
 };
 
-export const useOverlay = show => {
+export const useOverlay = (show: boolean) => {
   const overlay = useTransition(show, null, {
     from: { opacity: 0 },
     enter: { opacity: 1 },

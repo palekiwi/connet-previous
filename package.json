@@ -4,8 +4,10 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@types/body-scroll-lock": "^2.6.0",
     "@types/react-helmet": "^5.0.8",
     "babel-plugin-styled-components": "^1.10.0",
+    "body-scroll-lock": "^2.6.1",
     "browser-locale": "^1.0.3",
     "core-js": "^2.6.5",
     "gatsby": "^2.1.37",

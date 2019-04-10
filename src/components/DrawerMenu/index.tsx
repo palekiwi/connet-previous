@@ -36,7 +36,7 @@ const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo, title, navItems }) => {
       open={open}
       close={close}
     >
-      <DrawerContent flexDirection="column" bg="background.light" p={3}>
+      <DrawerContent flexDirection="column" bg="white.light" p={3}>
         <Flex justifyContent="flex-end">
           <CloseButton onClick={close} />
         </Flex>
