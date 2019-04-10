@@ -68,7 +68,7 @@ const AboutTemplate: React.SFC<AboutTemplateProps> = ({ data }) => {
         title={content.frontmatter.title}
       />
       <Section>
-        <Box bg="background.light" pb={0} py={3} w={1}>
+        <Box bg="background.light" w={1}>
           <Container>
             <Content
               my={4}
@@ -79,7 +79,7 @@ const AboutTemplate: React.SFC<AboutTemplateProps> = ({ data }) => {
               style={{ textAlign: "center" }}
             />
           </Container>
-          <Flex my={3} p={3} justifyContent="center" flexWrap="wrap">
+          <Flex mt={3} p={3} justifyContent="center" flexWrap="wrap">
             {services.edges.map(({ node }, i) => (
               <Flex key={i} p={1}>
                 <Link to={node.fields.slug}>
@@ -90,7 +90,7 @@ const AboutTemplate: React.SFC<AboutTemplateProps> = ({ data }) => {
               </Flex>
             ))}
           </Flex>
-          <Box my={3}>
+          <Box mt={3}>
             <Timeline
               title={content.frontmatter.referencesSection.title}
               subtitle={content.frontmatter.referencesSection.subtitle}
