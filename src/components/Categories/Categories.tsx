@@ -43,6 +43,7 @@ const Categories: React.SFC<Props> = ({
           mx="auto"
           px={[3, 3, 0]}
           dangerouslySetInnerHTML={{ __html: markdown }}
+          style={{ textAlign: "center" }}
         />
       </Container>
     )}

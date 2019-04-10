@@ -33,6 +33,7 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
             w={[1, 1, 3 / 4, 2 / 3]}
             mx="auto"
             px={[3, 3, 0]}
+            style={{ textAlign: "center" }}
             dangerouslySetInnerHTML={{ __html: markdown }}
           />
         </Container>

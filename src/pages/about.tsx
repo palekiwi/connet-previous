@@ -76,6 +76,7 @@ const AboutTemplate: React.SFC<AboutTemplateProps> = ({ data }) => {
               mx="auto"
               px={[3, 3, 0]}
               dangerouslySetInnerHTML={{ __html: content.html }}
+              style={{ textAlign: "center" }}
             />
           </Container>
           <Flex my={3} p={3} justifyContent="center" flexWrap="wrap">
