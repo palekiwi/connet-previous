@@ -1,6 +1,7 @@
 import * as React from "react";
 import { styled, Box, Card, Text, Flex } from "primithemes";
 import { Logo } from "src/components/Logo";
+import { Link } from "src/components/Link";
 
 const Main = styled(Card)`
   position: relative;
@@ -33,18 +34,11 @@ const Footer: React.SFC<Props> = ({ logo, title, phone, email, address }) => (
         flexDirection={["column", "column", "row"]}
         py={3}
       >
-        {logo ? (
-          <Flex style={{ opacity: 0.9 }} w={["220px"]}>
-            <img
-              style={{ width: "100%", height: "100%" }}
-              src={logo.childImageSharp.fixed.src}
-            />
-          </Flex>
-        ) : (
-          <Box mr={[0, 0, 4]} mb={[2, 2, 0]}>
+        <Box mr={[0, 0, 4]} mb={[2, 2, 0]}>
+          <Link to="/">
             <Logo opacity={0.9} variant="light" width={130} />
-          </Box>
-        )}
+          </Link>
+        </Box>
         <Flex justifyContent="center" flexDirection="column">
           <Text mb={2} color="grey.300" fontSize={3} fontWeight={5}>
             {title}
