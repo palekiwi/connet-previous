@@ -77,7 +77,7 @@ export const Header: React.SFC<HeaderProps> = ({
                     <LogoImg src={logo.childImageSharp.fixed.src} />
                   </LogoWrapper>
                 ) : (
-                  <Logo variant="dark" width={60} opacity={0.8} />
+                  <Logo width={60} opacity={1} />
                 )}
                 <BrandName
                   display={["none", "none", "none", "block"]}
