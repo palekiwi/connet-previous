@@ -11,6 +11,7 @@ module.exports = {
       },
     },
     "gatsby-plugin-netlify-cms",
+    "gatsby-plugin-layout",
     "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-plugin-favicon",

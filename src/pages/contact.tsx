@@ -1,7 +1,5 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import { Layout } from "../components/Layout";
-import { withIntl } from "../i18n/withIntl";
 import { css, styled, Box, Flex, Card } from "primithemes";
 import { Text } from "src/components/Text";
 import { Container } from "../components/Container";
@@ -63,7 +61,7 @@ const ContactCard = styled(Card)`
 
 const ContactPage: React.SFC<Props> = ({ data: { content } }) => {
   return (
-    <Layout>
+    <>
       <Banner
         title={content.frontmatter.title}
         image={content.frontmatter.image}
@@ -149,11 +147,11 @@ const ContactPage: React.SFC<Props> = ({ data: { content } }) => {
           </Flex>
         </Container>
       </Box>
-    </Layout>
+    </>
   );
 };
 
-export default withIntl(ContactPage);
+export default ContactPage;
 
 export const query = graphql`
   query ContactPageQuery($locale: String!) {

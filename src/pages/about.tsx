@@ -1,7 +1,5 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import { Layout } from "../components/Layout";
-import { withIntl } from "../i18n";
 import { Banner } from "../components/Banner";
 import { Section } from "../components/Section";
 import { Timeline } from "../components/Timeline";
@@ -62,7 +60,7 @@ interface AboutTemplateProps {
 const AboutTemplate: React.SFC<AboutTemplateProps> = ({ data }) => {
   const { content, services, references } = data;
   return (
-    <Layout>
+    <>
       <Banner
         image={content.frontmatter.image}
         title={content.frontmatter.title}
@@ -99,11 +97,11 @@ const AboutTemplate: React.SFC<AboutTemplateProps> = ({ data }) => {
           </Box>
         </Box>
       </Section>
-    </Layout>
+    </>
   );
 };
 
-export default withIntl(AboutTemplate);
+export default AboutTemplate;
 
 export const query = graphql`
   query($locale: String!) {

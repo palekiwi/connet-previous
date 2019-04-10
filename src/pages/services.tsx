@@ -1,7 +1,5 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import { Layout } from "../components/Layout";
-import { withIntl } from "../i18n";
 import { Image } from "../components/Image";
 import { styled, Flex, Text } from "primithemes";
 import { Button } from "../components/Button";
@@ -53,7 +51,7 @@ const ServicesPage: React.SFC<ServicesProps> = ({
   data: { content, services },
 }) => {
   return (
-    <Layout>
+    <>
       <Banner
         title={content.frontmatter.title}
         image={content.frontmatter.image}
@@ -106,11 +104,11 @@ const ServicesPage: React.SFC<ServicesProps> = ({
           ))}
         </Container>
       </Section>
-    </Layout>
+    </>
   );
 };
 
-export default withIntl(ServicesPage);
+export default ServicesPage;
 
 export const query = graphql`
   query($locale: String!) {
