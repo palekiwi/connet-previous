@@ -18,14 +18,8 @@ export const onCreateNode: GatsbyOnCreateNode = ({
 
     const getSlugField = (node: any, nodeType: string) => {
       switch (nodeType) {
-        case "wines":
-          return node.frontmatter["wineId"];
-        case "wineries":
-          return node.frontmatter["wineryId"];
-        case "promos":
-          return node.frontmatter["promoId"];
-        case "events":
-          return node.frontmatter["eventId"];
+        case "services":
+          return node.frontmatter["title"];
         default:
           return node.id;
       }
