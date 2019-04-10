@@ -21,12 +21,14 @@ export const Content = styled(Box)`
   }
   h1 {
     font-size: ${props => props.theme.fontSizes[6]};
+    font-weight: ${props => props.theme.fontWeights[5]};
     margin-top: ${props => props.theme.sizes[4]};
     margin-bottom: ${props => props.theme.sizes[3]};
     color: ${props => props.theme.colors.text.dark};
   }
   h2 {
     font-size: ${props => props.theme.fontSizes[5]};
+    font-weight: ${props => props.theme.fontWeights[3]};
     margin-top: ${props => props.theme.sizes[3]};
     margin-bottom: ${props => props.theme.sizes[2]};
   }
