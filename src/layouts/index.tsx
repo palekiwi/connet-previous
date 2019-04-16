@@ -1,8 +1,7 @@
 import * as React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
-import { Flex, styled } from "primithemes";
-import { theme } from "src/theme";
+import { styled, defaultTheme } from "src/theme";
 import { FormattedMessage } from "react-intl";
 import { nav as navMessages } from "./Layout.messages";
 import { IntlProvider, addLocaleData } from "react-intl";
@@ -36,13 +35,15 @@ const Root = styled.div`
   overflow-x: hidden;
 `;
 
-const Content = styled(Flex)`
+const Content = styled.div`
+  display: flex;
   flex-direction: column;
   overflow-x: hidden;
   min-height: 100vh;
 `;
 
-const Main = styled(Flex)`
+const Main = styled.div`
+  display: flex;
   width: 100%;
   flex-direction: column;
   margin: 0 auto;
@@ -145,7 +146,7 @@ export const Layout: React.SFC<Props> = ({ children, ...props }) => {
           throw `Settings could not be loaded for ${locale}`;
         return (
           <IntlProvider locale={locale} messages={messages}>
-            <ThemeProvider theme={theme}>
+            <ThemeProvider theme={defaultTheme}>
               <Root>
                 <Normalize />
                 <GlobalStyle />

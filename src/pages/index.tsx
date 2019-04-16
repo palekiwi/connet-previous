@@ -1,9 +1,9 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import { Banner } from "../components/Banner";
-import { AboutSummary } from "../components/About";
-import { Categories } from "../components/Categories";
-import { Box } from "primithemes";
+import { Banner } from "src/components/Banner";
+import { AboutSummary } from "src/components/About";
+import { Categories } from "src/components/Categories";
+import { Box } from "src/components/Box";
 
 interface ServiceNode {
   node: {
@@ -63,6 +63,7 @@ const IndexPage: React.SFC<Props> = ({
         image={content.frontmatter.image}
       />
       <Box bg="background.light">
+        text
         <AboutSummary
           title={welcomeSection.frontmatter.title}
           markdown={welcomeSection.html}
@@ -72,7 +73,7 @@ const IndexPage: React.SFC<Props> = ({
           }))}
         />
       </Box>
-      <Box>
+      <div>
         <Categories
           title={servicesSection.frontmatter.title}
           markdown={servicesSection.html}
@@ -84,7 +85,7 @@ const IndexPage: React.SFC<Props> = ({
             buttonText: "Learn More",
           }))}
         />
-      </Box>
+      </div>
     </>
   );
 };
