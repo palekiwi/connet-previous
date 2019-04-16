@@ -1,9 +1,9 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import { Image } from "../components/Image";
-import { styled, Flex, Text } from "primithemes";
-import { Button } from "../components/Button";
-import { Link } from "../components/Link";
+import { H2, H5 } from "src/components/Text";
+import { styled } from "src/theme";
+import { Button } from "src/components/Button";
 import { Section } from "../components/Section";
 import { Banner } from "../components/Banner";
 import { Container } from "../components/Container";
@@ -47,6 +47,43 @@ interface ServicesProps {
   };
 }
 
+const Service = styled.div`
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  flex-direction: row;
+  background: linear-gradient(30deg, hsl(0, 0%, 100%), hsl(0, 0%, 93%));
+`;
+
+const ImgWrapper = styled.div`
+  width: 100%;
+  ${props => props.theme.devices[2]} {
+    width: 50%;
+  }
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  padding: ${props => props.theme.sizes[4]} ${props => props.theme.sizes[3]};
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  ${props => props.theme.devices[2]} {
+    width: 50%;
+  }
+`;
+
+const Title = styled(H2)`
+  font-weight: 700;
+  margin-bottom: ${props => props.theme.sizes[2]};
+`;
+const Subtitle = styled(H5)`
+  font-size: ${props => props.theme.fontSizes[3]};
+  margin-bottom: ${props => props.theme.sizes[2]};
+  color: ${props => props.theme.colors.text.main};
+`;
+
 const ServicesPage: React.SFC<ServicesProps> = ({
   data: { content, services },
 }) => {
@@ -59,48 +96,18 @@ const ServicesPage: React.SFC<ServicesProps> = ({
       <Section>
         <Container>
           {services.edges.map(({ node }, i) => (
-            <Flex
-              key={i}
-              w={1}
-              flexWrap="wrap"
-              flexDirection={"row"}
-              bg="linear-gradient(30deg, hsl(0,0%,100%), hsl(0,0%,93%))"
-            >
-              <Flex w={[1, 1, 1 / 2]}>
+            <Service key={i}>
+              <ImgWrapper>
                 <Img style={{ width: "100%" }} fluid={node.frontmatter.image} />
-              </Flex>
-              <Flex
-                p={4}
-                w={[1, 1, 1 / 2]}
-                flexDirection="column"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <Text
-                  mb={2}
-                  is="h2"
-                  fontSize={[5, 5, 5, 6]}
-                  color="text.dark"
-                  fontWeight={5}
-                >
-                  {node.frontmatter.title}
-                </Text>
-                <Text
-                  mb={3}
-                  fontSize={3}
-                  is="h5"
-                  fontWeight={2}
-                  color="text.main"
-                >
-                  {node.frontmatter.subtitle}
-                </Text>
-                <Link to={node.fields.slug}>
-                  <Button mt={2} variant="primary" contained>
-                    Learn More
-                  </Button>
-                </Link>
-              </Flex>
-            </Flex>
+              </ImgWrapper>
+              <ContentWrapper>
+                <Title>{node.frontmatter.title}</Title>
+                <Subtitle>{node.frontmatter.subtitle}</Subtitle>
+                <Button to={node.fields.slug} variant="primary" contained>
+                  Learn More
+                </Button>
+              </ContentWrapper>
+            </Service>
           ))}
         </Container>
       </Section>

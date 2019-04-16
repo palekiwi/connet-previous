@@ -1,20 +1,23 @@
+import * as React from "react";
 import { Link as BaseLink } from "../../i18n";
-import { css, styled, TextProps } from "primithemes";
+import styled, { css } from "styled-components";
 
-interface Props extends TextProps {
+interface Props {
   to: string;
   styled?: boolean;
   onClick?(): void;
-  children: any;
 }
 
-export const Link = styled(BaseLink)<Props>`
+export const Link = styled(({ styled, ...props }) => <BaseLink {...props} />)<
+  Props
+>`
   ${props =>
     props.styled &&
     css`
-      color: ${props => props.theme.colors.secondary.light};
+      font-weight: ${props => props.theme.fontWeights[6]};
+      color: ${props => props.theme.colors.text.dark};
       &:hover {
-        color: ${props => props.theme.colors.secondary.dark};
+        color: ${props => props.theme.colors.text.light};
       }
     `};
 `;

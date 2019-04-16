@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { Banner } from "src/components/Banner";
 import { AboutSummary } from "src/components/About";
 import { Categories } from "src/components/Categories";
-import { Box } from "src/components/Box";
+import { styled } from "src/theme";
 
 interface ServiceNode {
   node: {
@@ -53,6 +53,10 @@ interface Props {
   };
 }
 
+const Section = styled.div`
+  background: ${props => props.theme.colors.background.light};
+`;
+
 const IndexPage: React.SFC<Props> = ({
   data: { content, welcomeSection, servicesSection, companyFacts, services },
 }) => {
@@ -62,8 +66,7 @@ const IndexPage: React.SFC<Props> = ({
         title={content.frontmatter.title}
         image={content.frontmatter.image}
       />
-      <Box bg="background.light">
-        text
+      <Section>
         <AboutSummary
           title={welcomeSection.frontmatter.title}
           markdown={welcomeSection.html}
@@ -72,7 +75,7 @@ const IndexPage: React.SFC<Props> = ({
             subtitle: f.title,
           }))}
         />
-      </Box>
+      </Section>
       <div>
         <Categories
           title={servicesSection.frontmatter.title}

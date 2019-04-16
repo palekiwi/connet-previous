@@ -1,13 +1,9 @@
 import * as React from "react";
-import {
-  styled,
-  css,
-  Button as Base,
-  ButtonProps as BaseProps,
-} from "primithemes";
+import styled, { css } from "styled-components";
+
 import { Link } from "../../i18n";
 
-interface ButtonProps extends BaseProps {
+interface ButtonProps {
   to?: string;
   variant?: "primary" | "secondary" | "white";
   contained?: boolean;
@@ -15,7 +11,9 @@ interface ButtonProps extends BaseProps {
   outlined?: boolean;
   small?: boolean;
   large?: boolean;
+  style?: any;
   onClick?(): void;
+  type?: string;
 }
 
 const ButtonLink: React.SFC<ButtonProps> = ({
@@ -28,11 +26,12 @@ const ButtonLink: React.SFC<ButtonProps> = ({
   variant,
   ...props
 }) => {
-  if (to) return <Base as={Link} to={to} {...props} />;
-  return <Base {...props} />;
+  if (to) return <Link to={to} {...props} />;
+  return <button {...props} />;
 };
 
 const defaultStyle = css<ButtonProps>`
+  cursor: pointer;
   font-family: ${props => props.theme.fonts.sans};
   display: inline-block;
   border: ${props => props.theme.borders[1]};
@@ -50,29 +49,25 @@ const defaultStyle = css<ButtonProps>`
   &:active {
     outline: none;
   }
-  &:focus {
-    outline: none;
-  }
   ${props =>
     props.outlined &&
     css`
-      border-color: ${props.theme.colors.text.light};
+      border-color: ${props.theme.colors.divider.light};
       &:hover {
         background: ${props.theme.colors.divider.light};
       }
       &:focus {
         outline: none;
-        background: ${props.theme.colors.divider.main};
       }
     `}
   ${props =>
     props.contained &&
     css`
       border-color: transparent;
-      background: ${props.theme.colors.text.light};
-      color: ${props.theme.colors.white.light};
+      background: ${props.theme.colors.divider.light};
+      color: ${props.theme.colors.text.dark};
       &:hover {
-        background: ${props.theme.colors.text.main};
+        background: ${props.theme.colors.divider.main};
       }
     `}
 `;
