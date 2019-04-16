@@ -1,6 +1,8 @@
 import { styled, css } from "src/theme";
 
 const base = css`
+  margin: 0;
+  padding: 0;
   font-family: ${props => props.theme.fonts.sans};
   font-weight: 400;
   color: ${props => props.theme.colors.text.dark};

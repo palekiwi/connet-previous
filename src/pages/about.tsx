@@ -3,11 +3,37 @@ import { graphql } from "gatsby";
 import { Banner } from "../components/Banner";
 import { Section } from "../components/Section";
 import { Timeline } from "../components/Timeline";
-import { Box, Flex } from "primithemes";
 import { Button } from "../components/Button";
-import { Link } from "../components/Link";
+import { styled } from "src/theme";
 import { Container } from "../components/Container";
 import { Content } from "src/components/Content";
+
+const Intro = styled.div`
+  background: ${props => props.theme.colors.background.light};
+  width: 100%;
+  padding: ${props => props.theme.sizes[4]} 0;
+`;
+const Tiles = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: ${props => props.theme.sizes[3]} 0;
+`;
+
+const Tile = styled.div`
+  padding: ${props => props.theme.sizes[1]};
+`;
+
+const StyledContent = styled(Content)`
+  width: 100%;
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 0 ${props => props.theme.sizes[3]};
+  ${props => props.theme.devices[2]} {
+    padding: 0;
+  }
+  text-align: center;
+`;
 
 interface ServiceNode {
   node: {
@@ -66,36 +92,25 @@ const AboutTemplate: React.SFC<AboutTemplateProps> = ({ data }) => {
         title={content.frontmatter.title}
       />
       <Section>
-        <Box bg="background.light" w={1}>
+        <Intro>
           <Container>
-            <Content
-              my={4}
-              w={[1, 1, 3 / 4, 2 / 3]}
-              mx="auto"
-              px={[3, 3, 0]}
-              dangerouslySetInnerHTML={{ __html: content.html }}
-              style={{ textAlign: "center" }}
-            />
+            <StyledContent dangerouslySetInnerHTML={{ __html: content.html }} />
           </Container>
-          <Flex mt={3} p={3} justifyContent="center" flexWrap="wrap">
+          <Tiles>
             {services.edges.map(({ node }, i) => (
-              <Flex key={i} p={1}>
-                <Link to={node.fields.slug}>
-                  <Button contained variant="primary">
-                    {node.frontmatter.title}
-                  </Button>
-                </Link>
-              </Flex>
+              <Tile key={i}>
+                <Button to={node.fields.slug} contained variant="primary">
+                  {node.frontmatter.title}
+                </Button>
+              </Tile>
             ))}
-          </Flex>
-          <Box mt={3}>
-            <Timeline
-              title={content.frontmatter.referencesSection.title}
-              subtitle={content.frontmatter.referencesSection.subtitle}
-              items={references.edges}
-            />
-          </Box>
-        </Box>
+          </Tiles>
+        </Intro>
+        <Timeline
+          title={content.frontmatter.referencesSection.title}
+          subtitle={content.frontmatter.referencesSection.subtitle}
+          items={references.edges}
+        />
       </Section>
     </>
   );
