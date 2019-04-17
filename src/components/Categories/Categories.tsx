@@ -3,7 +3,6 @@ import { Image } from "../Image";
 import { Button } from "../Button";
 import { Box, Card, Flex, Text } from "primithemes";
 import { Container } from "../Container";
-import { Link } from "src/components/Link";
 import { Content } from "src/components/Content";
 import { FadeIn } from "../Reveal";
 
@@ -79,9 +78,9 @@ const Categories: React.SFC<Props> = ({
                     )}
                   </Box>
                   <Flex m={3}>
-                    <Link to={x.to}>
-                      <Button outlined>{x.buttonText}</Button>
-                    </Link>
+                    <Button to={x.to} outlined>
+                      {x.buttonText}
+                    </Button>
                   </Flex>
                 </Flex>
               </Card>

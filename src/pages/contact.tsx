@@ -2,7 +2,7 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import { css, styled } from "src/theme";
 import { Container } from "../components/Container";
-import { H3, P } from "src/components/Text";
+import { Trafalgar, LongPrimer } from "src/components/Text";
 import { Phone } from "styled-icons/material/Phone";
 import { Email } from "styled-icons/material/Email";
 import { Home } from "styled-icons/material/Home";
@@ -62,7 +62,7 @@ const Header = styled.div`
   text-align: center;
 `;
 
-const Title = styled(H3)``;
+const Title = styled(Trafalgar)``;
 
 const Body = styled.div`
   padding: ${props => props.theme.sizes[3]};
@@ -75,9 +75,10 @@ const Info = styled.div`
   padding-left: ${props => props.theme.sizes[3]};
   border-left: ${props => props.theme.borders[1]};
   border-color: ${props => props.theme.colors.divider.light};
-  & ${P} {
-    color: ${props => props.theme.colors.text.dark};
-  }
+`;
+
+const P = styled(LongPrimer)`
+  color: ${props => props.theme.colors.text.dark};
 `;
 
 export interface Props {

@@ -2,8 +2,6 @@ import { languages } from "../src/i18n/";
 import path from "path";
 import { GatsbyOnCreatePage } from "./types";
 
-const hideTestData = false;
-
 export const onCreatePage: GatsbyOnCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
@@ -34,7 +32,6 @@ export const onCreatePage: GatsbyOnCreatePage = ({ page, actions }) => {
         context: {
           languages,
           locale: code,
-          testData: hideTestData,
           routed: true,
           originalPath: page.path,
         },

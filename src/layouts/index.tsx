@@ -7,6 +7,7 @@ import { nav as navMessages } from "./Layout.messages";
 import { IntlProvider, addLocaleData } from "react-intl";
 import { localeData } from "src/i18n/locales";
 import { Policy } from "src/components/Policy";
+import { fonts } from "src/theme";
 
 import { Normalize } from "styled-normalize";
 import { Head } from "src/components/Head";
@@ -24,6 +25,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     overflow-y: scroll;
     height: 100%;
+    font-family: ${fonts.sans};
   }
   a {
     text-decoration: none;

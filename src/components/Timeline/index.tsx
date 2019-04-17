@@ -1,7 +1,15 @@
 import * as React from "react";
-import { Box, Flex, Text } from "primithemes";
 import { Container } from "../Container";
 import { Line, Wrapper, Marker, ProjectCard } from "./timelineStyles";
+import { styled } from "src/theme";
+import {
+  Trafalgar,
+  DoublePica,
+  Paragon,
+  GreatPrimer,
+  LongPrimer,
+  Brevier,
+} from "src/components/Text";
 
 interface TimelineItem {
   node: {
@@ -20,56 +28,74 @@ interface Props {
   items: TimelineItem[];
 }
 
+const Section = styled.section`
+  background: ${props => props.theme.colors.grey[200]};
+  width: 100%;
+`;
+const Header = styled.div`
+  text-align: center;
+  padding: ${props => props.theme.sizes[3]};
+`;
+
+const Title = styled(Trafalgar)`
+  text-color: ${props => props.theme.colors.text.main};
+  font-weight: 700;
+  margin-bottom: ${props => props.theme.sizes[2]};
+`;
+const Subtitle = styled(DoublePica)``;
+
+const Items = styled.div`
+  margin: ${props => props.theme.sizes[3]};
+`;
+
+const Year = styled(Paragon)`
+  margin-bottom: ${props => props.theme.sizes[1]};
+  font-size: ${props => props.theme.fontSizes[4]};
+  font-weight: ${props => props.theme.fontWeights[2]};
+  color: ${props => props.theme.colors.primary.main};
+`;
+
+const PTitle = styled(GreatPrimer)`
+  margin-bottom: ${props => props.theme.sizes[2]};
+  color: ${props => props.theme.colors.text.main};
+`;
+
+const Customer = styled(GreatPrimer)`
+  margin-bottom: ${props => props.theme.sizes[2]};
+`;
+
+const Location = styled(Brevier)`
+  margin-bottom: ${props => props.theme.sizes[2]};
+`;
+
 const Timeline: React.SFC<Props> = ({ title, subtitle, items }) => (
-  <Box bg="grey.200" w={1}>
-    <Flex flexDirection="column">
-      <Box mt={4} mb={3}>
-        <Text m={2} color="text.main" textAlign="center" is="h2">
-          {title}
-        </Text>
-        <Text m={2} textAlign="center" is="p" color="text.primary">
-          {subtitle}
-        </Text>
-      </Box>
-      <Container>
-        <Box m={3}>
-          {items.map(({ node }, i) => (
-            <Flex key={i}>
-              <Line bg="grey.200" p={3} w={1}>
-                <Wrapper i={i}>
-                  <Marker bg="grey.300" b={4} borderColor="grey.200" />
-                  <ProjectCard
-                    radius={2}
-                    w={1}
-                    i={i}
-                    py={3}
-                    px={4}
-                    bg="background.light"
-                  >
-                    <Text
-                      mb={1}
-                      fontSize={4}
-                      fontWeight={2}
-                      color="primary.main"
-                    >
-                      {node.frontmatter.date}
-                    </Text>
-                    <Text mb={2} fontSize={[2, 3, 3]} color="text.main">
-                      {node.frontmatter.title}
-                    </Text>
-                    <Text color="secondary.main">
-                      {node.frontmatter.customer}
-                    </Text>
-                    <Text color="text.light">{node.frontmatter.location}</Text>
-                  </ProjectCard>
-                </Wrapper>
-              </Line>
-            </Flex>
-          ))}
-        </Box>
-      </Container>
-    </Flex>
-  </Box>
+  <Section>
+    <Header>
+      <Title as="h2">{title}</Title>
+      <Subtitle as="h5">{subtitle}</Subtitle>
+    </Header>
+    <Container>
+      <Items>
+        {items.map(({ node }, i) => (
+          <Line key={i} bg="grey.200" p={3} w={1}>
+            <Wrapper i={i}>
+              <Marker bg="grey.300" b={4} borderColor="grey.200" />
+              <ProjectCard i={i}>
+                <Year as="h3">{node.frontmatter.date}</Year>
+                <PTitle>{node.frontmatter.title}</PTitle>
+                <Customer color="secondary.main">
+                  {node.frontmatter.customer}
+                </Customer>
+                <Location color="text.light">
+                  {node.frontmatter.location}
+                </Location>
+              </ProjectCard>
+            </Wrapper>
+          </Line>
+        ))}
+      </Items>
+    </Container>
+  </Section>
 );
 
 export { Timeline, TimelineItem };

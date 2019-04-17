@@ -1,46 +1,114 @@
 import { styled, css } from "src/theme";
 
-const base = css`
+interface Props {
+  fontWeight?: "thin" | "bold";
+  color?: string;
+}
+
+const base = css<Props>`
   margin: 0;
   padding: 0;
   font-family: ${props => props.theme.fonts.sans};
   font-weight: 400;
   color: ${props => props.theme.colors.text.dark};
-  line-height: ${props => props.theme.lineHeights.wide};
 `;
 
-export const H1 = styled.h1`
-  ${base}
-  font-size: ${props => props.theme.fontSizes[6]};
-  line-height: ${props => props.theme.lineHeights.narrow};
+export const Canon = styled.div`
+  ${base};
+  font-size: 32px;
+  font-height: 36px;
+  ${props => props.theme.devices[2]} {
+    font-size: 44px;
+    font-height: 48px;
+  }
 `;
 
-export const H2 = styled.h2`
-  ${base}
-  font-size: ${props => props.theme.fontSizes[5]};
-  line-height: ${props => props.theme.lineHeights.narrow};
+export const Trafalgar = styled.div`
+  ${base};
+  font-size: 24px;
+  font-height: 28px;
+  ${props => props.theme.devices[2]} {
+    font-size: 36px;
+    font-height: 40px;
+  }
 `;
 
-export const H3 = styled.h3`
-  ${base}
-  font-size: ${props => props.theme.fontSizes[4]};
-  line-height: ${props => props.theme.lineHeights.medium};
+export const Paragon = styled.div`
+  ${base};
+  font-size: 22px;
+  font-height: 26px;
+  ${props => props.theme.devices[2]} {
+    font-size: 28px;
+    font-height: 32px;
+  }
 `;
 
-export const H4 = styled.h4`
-  ${base}
-  font-size: ${props => props.theme.fontSizes[3]};
-  line-height: ${props => props.theme.lineHeights.medium};
+export const DoublePica = styled.div`
+  ${base};
+  font-size: 20px;
+  font-height: 24px;
+  ${props => props.theme.devices[2]} {
+    font-size: 24px;
+    font-height: 28px;
+  }
 `;
 
-export const H5 = styled.h5`
-  ${base}
-  font-size: ${props => props.theme.fontSizes[2]};
-  line-height: ${props => props.theme.lineHeights.wide};
-  font-weight: 300;
+export const GreatPrimer = styled.div`
+  ${base};
+  font-size: 18px;
+  font-height: 22px;
+  ${props => props.theme.devices[2]} {
+    font-size: 20px;
+    font-height: 24px;
+  }
 `;
 
-export const P = styled.p`
-  ${base}
-  font-size: ${props => props.theme.fontSizes[2]};
+export const BodyCopy = styled.div`
+  ${base};
+  font-size: 16px;
+  font-height: 22px;
+  ${props => props.theme.devices[2]} {
+    font-size: 18px;
+    font-height: 24px;
+  }
+`;
+
+export const Pica = styled.div`
+  ${base};
+  font-size: 16px;
+  font-height: 20px;
+  ${props => props.theme.devices[2]} {
+    font-size: 18px;
+    font-height: 22px;
+  }
+`;
+
+export const LongPrimer = styled.div`
+  ${base};
+  font-size: 15px;
+  font-height: 18px;
+  ${props => props.theme.devices[2]} {
+    font-size: 15px;
+    font-height: 20px;
+  }
+`;
+
+export const Brevier = styled.div`
+  ${base};
+  font-size: 14px;
+  font-height: 18px;
+  ${props => props.theme.devices[2]} {
+    font-size: 14px;
+    font-height: 18px;
+  }
+`;
+
+export const Minion = styled.div`
+  ${base};
+  font-size: 12px;
+  font-height: 16px;
+  ${props => props.theme.devices[2]} {
+    font-size: 13px;
+    font-height: 16px;
+  }
 `;

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import { Image } from "../components/Image";
-import { H2, H5 } from "src/components/Text";
+import { Trafalgar, LongPrimer } from "src/components/Text";
 import { styled } from "src/theme";
 import { Button } from "src/components/Button";
 import { Section } from "../components/Section";
@@ -74,11 +74,11 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const Title = styled(H2)`
+const Title = styled(Trafalgar)`
   font-weight: 700;
   margin-bottom: ${props => props.theme.sizes[2]};
 `;
-const Subtitle = styled(H5)`
+const Subtitle = styled(LongPrimer)`
   font-size: ${props => props.theme.fontSizes[3]};
   margin-bottom: ${props => props.theme.sizes[2]};
   color: ${props => props.theme.colors.text.main};

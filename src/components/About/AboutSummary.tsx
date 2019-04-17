@@ -1,9 +1,10 @@
 import * as React from "react";
-import { Box, Flex } from "primithemes";
-import { Text, Heading } from "../Text";
+import styled from "styled-components";
+import { space } from "src/theme";
 import { Content } from "src/components/Content";
 import { FadeIn } from "../Reveal";
 import { Container } from "../Container";
+import { Highlight } from "./Highlight";
 
 interface Highlight {
   title: React.ReactNode;
@@ -18,6 +19,26 @@ interface AboutSummaryProps {
   highlights: Highlight[];
 }
 
+const Wrapper = styled.div`
+  padding: ${space(3)};
+`;
+
+const Tiles = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: ${space(3)};
+`;
+const Tile = styled.div`
+  padding: ${space(3)};
+  flex: 1 1 auto;
+  display: flex;
+  & > div {
+    flex: 1 0 auto;
+  }
+`;
+
 const AboutSummary: React.SFC<AboutSummaryProps> = ({
   title,
   subtitle,
@@ -26,7 +47,7 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
   markdown,
 }) => {
   return (
-    <Box p={3}>
+    <Wrapper>
       {markdown && (
         <Container>
           <Content
@@ -40,44 +61,18 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
       )}
       {!!highlights && (
         <Container>
-          <Flex flexWrap="wrap" w={1} p={3}>
+          <Tiles>
             {highlights.map((h, i) => (
-              <Flex
-                p={3}
-                w={[1, 1 / 2, 1 / 4]}
-                key={i}
-                alignItems="center"
-                flexDirection="column"
-              >
+              <Tile key={i}>
                 <FadeIn once style={{ width: "100%" }}>
-                  <Box w={1}>
-                    <Heading
-                      color="primary.main"
-                      mb={2}
-                      textAlign="center"
-                      is="h5"
-                      fontSize={[5, 6]}
-                      fontWeight={2}
-                    >
-                      {h.title}
-                    </Heading>
-                    <Text
-                      textTransform="uppercase"
-                      color="text.main"
-                      fontSize={1}
-                      is="p"
-                      textAlign="center"
-                    >
-                      {h.subtitle}
-                    </Text>
-                  </Box>
+                  <Highlight title={h.title} subtitle={h.subtitle} />
                 </FadeIn>
-              </Flex>
+              </Tile>
             ))}
-          </Flex>
+          </Tiles>
         </Container>
       )}
-    </Box>
+    </Wrapper>
   );
 };
 

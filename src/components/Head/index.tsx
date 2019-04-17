@@ -14,7 +14,7 @@ const HeadBase: React.SFC<Props & InjectedIntlProps> = ({ intl, title }) => (
     link={[
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css?family=Muli:300,400,700",
+        href: "https://fonts.googleapis.com/css?family=Muli:300,400,600",
       },
     ]}
   />

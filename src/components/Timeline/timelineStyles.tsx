@@ -96,10 +96,14 @@ const rightCard = css`
   ${rightArrow}
 `;
 
-export const ProjectCard = styled(Card)<{ i: number }>`
+export const ProjectCard = styled.div<{ i: number }>`
   filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.14));
   overflow: visible;
   position: relative;
+  border-radius: ${props => props.theme.radii[2]};
+  width: 100%;
+  padding: ${props => props.theme.sizes[3]} ${props => props.theme.sizes[4]};
+  background: ${props => props.theme.colors.background.light};
   ${props => props.theme.devices[0]} {
     ${leftCard}
   }
