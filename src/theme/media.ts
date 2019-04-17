@@ -1,4 +1,4 @@
-import { css, FlattenSimpleInterpolation } from "styled-components";
+import { css } from "styled-components";
 
 export const devices = [
   `@media (min-width: 0px)`,
@@ -8,7 +8,7 @@ export const devices = [
   `@media (min-width: 1440px)`,
 ];
 
-const media = (idx: number) => (inner: FlattenSimpleInterpolation) => css`
+const media = (idx: number) => (inner: any) => css`
   ${devices[idx]} {
     ${inner}
   }

@@ -5,6 +5,7 @@ import { Content } from "src/components/Content";
 import { FadeIn } from "../Reveal";
 import { Container } from "../Container";
 import { Highlight } from "./Highlight";
+import { Tiles, Tile } from "src/components/Tiles";
 
 interface Highlight {
   title: React.ReactNode;
@@ -21,22 +22,6 @@ interface AboutSummaryProps {
 
 const Wrapper = styled.div`
   padding: ${space(3)};
-`;
-
-const Tiles = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-  padding: ${space(3)};
-`;
-const Tile = styled.div`
-  padding: ${space(3)};
-  flex: 1 1 auto;
-  display: flex;
-  & > div {
-    flex: 1 0 auto;
-  }
 `;
 
 const AboutSummary: React.SFC<AboutSummaryProps> = ({
@@ -61,9 +46,9 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
       )}
       {!!highlights && (
         <Container>
-          <Tiles>
+          <Tiles gutter={3}>
             {highlights.map((h, i) => (
-              <Tile key={i}>
+              <Tile w={[1, 1 / 2, 1 / 4]} key={i}>
                 <FadeIn once style={{ width: "100%" }}>
                   <Highlight title={h.title} subtitle={h.subtitle} />
                 </FadeIn>
