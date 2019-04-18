@@ -1,13 +1,12 @@
 import * as React from "react";
 import { Container } from "../Container";
 import { Line, Wrapper, Marker, ProjectCard } from "./timelineStyles";
-import { styled } from "src/theme";
+import styled from "styled-components";
 import {
   Trafalgar,
   DoublePica,
   Paragon,
   GreatPrimer,
-  LongPrimer,
   Brevier,
 } from "src/components/Text";
 

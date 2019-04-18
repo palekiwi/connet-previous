@@ -1,6 +1,6 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import { css, styled } from "src/theme";
+import styled, { css } from "styled-components";
 import { Container } from "../components/Container";
 import { Trafalgar, LongPrimer } from "src/components/Text";
 import { Phone } from "styled-icons/material/Phone";

@@ -9,7 +9,6 @@ interface Props {
 }
 
 const Wrapper = styled.div`
-  text-align: "center";
   text-align: center;
 `;
 

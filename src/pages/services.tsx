@@ -2,7 +2,7 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import { Image } from "../components/Image";
 import { Trafalgar, LongPrimer } from "src/components/Text";
-import { styled } from "src/theme";
+import styled from "styled-components";
 import { Button } from "src/components/Button";
 import { Section } from "../components/Section";
 import { Banner } from "../components/Banner";

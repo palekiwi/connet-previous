@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { Banner } from "src/components/Banner";
 import { AboutSummary } from "src/components/About";
 import { Categories } from "src/components/Categories";
-import { styled } from "src/theme";
+import styled from "styled-components";
 
 interface ServiceNode {
   node: {

@@ -1,4 +1,4 @@
-import { styled, css } from "src/theme";
+import styled, { css } from "styled-components";
 
 interface Props {
   fontWeight?: "thin" | "bold";

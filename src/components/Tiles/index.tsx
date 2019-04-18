@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { tablet, laptop, desktop, wide } from "src/theme/media";
+import { tablet, desktop, wide, fullhd } from "src/theme/media";
 import { space } from "src/theme";
 
 export const Tile = styled.div<{ w: number[] }>`
@@ -12,17 +12,17 @@ export const Tile = styled.div<{ w: number[] }>`
     `)}
   ${props =>
     props.w[2] &&
-    laptop(css`
+    desktop(css`
       width: ${props => props.w[2] * 100}%;
     `)}
   ${props =>
     props.w[3] &&
-    desktop(css`
+    wide(css`
       width: ${props => props.w[3] * 100}%;
     `)}
   ${props =>
     props.w[4] &&
-    wide(css`
+    fullhd(css`
       width: ${props => props.w[4] * 100}%;
     `)}
 `;

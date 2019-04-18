@@ -1,7 +1,8 @@
 import * as React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
-import { styled, defaultTheme } from "src/theme";
+import { defaultTheme } from "src/theme";
+import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 import { nav as navMessages } from "./Layout.messages";
 import { IntlProvider, addLocaleData } from "react-intl";

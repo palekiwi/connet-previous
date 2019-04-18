@@ -1,6 +1,7 @@
 import * as React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { space } from "src/theme";
+import { tablet, desktop } from "src/theme/media";
 import { Content } from "src/components/Content";
 import { FadeIn } from "../Reveal";
 import { Container } from "../Container";
@@ -20,8 +21,19 @@ interface AboutSummaryProps {
   highlights: Highlight[];
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.div``;
+
+const ContentWrapper = styled.div`
   padding: ${space(3)};
+  text-align: center;
+  ${tablet(css`
+    padding-left: 10%;
+    padding-right: 10%;
+  `)}
+  ${desktop(css`
+    padding-left: 20%;
+    padding-right: 20%;
+  `)}
 `;
 
 const AboutSummary: React.SFC<AboutSummaryProps> = ({
@@ -35,13 +47,9 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
     <Wrapper>
       {markdown && (
         <Container>
-          <Content
-            w={[1, 1, 3 / 4, 2 / 3]}
-            mx="auto"
-            px={[3, 3, 0]}
-            style={{ textAlign: "center" }}
-            dangerouslySetInnerHTML={{ __html: markdown }}
-          />
+          <ContentWrapper>
+            <Content dangerouslySetInnerHTML={{ __html: markdown }} />
+          </ContentWrapper>
         </Container>
       )}
       {!!highlights && (

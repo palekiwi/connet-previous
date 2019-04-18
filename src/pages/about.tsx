@@ -4,7 +4,7 @@ import { Banner } from "../components/Banner";
 import { Section } from "../components/Section";
 import { Timeline } from "../components/Timeline";
 import { Button } from "../components/Button";
-import { styled } from "src/theme";
+import styled from "styled-components";
 import { Container } from "../components/Container";
 import { Content } from "src/components/Content";
 

@@ -1,12 +1,6 @@
 import { shadows } from "./shadows";
 import { colors } from "./colors";
-import { unit, mapToRem } from "./utils";
-import baseStyled, {
-  css as baseCss,
-  ThemedCssFunction,
-  ThemedStyledInterface,
-  FlattenSimpleInterpolation,
-} from "styled-components";
+import { unit, rem, mapToRem } from "./utils";
 
 type Scale = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 
@@ -21,31 +15,29 @@ const radii = unit("px", [0, 2, 4, 8, 16, 32, 64, 128]);
 const lineHeights = [1.15, 1.25, 1.4, 1.5];
 const letterSpacings = ["normal", "-0.05", "0.1em", "0.25"];
 
-export const devices = [
-  `@media (min-width: 0px)`,
-  `@media (min-width: 600px)`,
-  `@media (min-width: 768px)`,
-  `@media (min-width: 1024px)`,
-  `@media (min-width: 1440px)`,
-];
+const g = 64;
+export const widths = mapToRem([
+  0,
+  769,
+  960 + 2 * g,
+  1152 + 2 * g,
+  1344 + 2 * g,
+]);
+
+export const gap = rem(64);
+
+export const devices = widths.map(x => `@media (min-width: ${x})`);
 
 export const fonts = {
   sans: "Muli, sans",
   serif: "serif",
 };
 
-const maxWidth = "1440px";
-
 export const color = (s: string) => {
   const [a, b] = s.split(".");
   return colors[a][b];
 };
 
-export const tablet = (inner: FlattenSimpleInterpolation) => css`
-  ${devices[1]} {
-    ${inner}
-  }
-`;
 export const space = (n: number) => spaces[n];
 export const shadow = (n: number) => shadows[n];
 export const lineHeight = (n: number) => lineHeights[n];
@@ -68,7 +60,6 @@ const defaultTheme = {
   fontWeights,
   lineHeights,
   letterSpacings,
-  maxWidth,
   shadows,
   zIndexes,
   f,
@@ -76,7 +67,4 @@ const defaultTheme = {
 
 type Theme = typeof defaultTheme;
 
-const css = baseCss as ThemedCssFunction<Theme>;
-const styled = baseStyled as ThemedStyledInterface<Theme>;
-
-export { defaultTheme, css, styled, Scale, Theme };
+export { defaultTheme, Scale, Theme };
