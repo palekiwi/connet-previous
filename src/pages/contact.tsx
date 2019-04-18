@@ -119,7 +119,7 @@ const ContactPage: React.SFC<Props> = ({ data: { content } }) => {
       />
       <Container>
         {content.frontmatter.contacts.map(c => (
-          <ContactCard>
+          <ContactCard key={c.name}>
             <Header>
               <Title>{c.name}</Title>
             </Header>

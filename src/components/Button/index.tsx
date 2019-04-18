@@ -14,6 +14,7 @@ interface ButtonProps {
   style?: any;
   onClick?(): void;
   type?: string;
+  activeClassName?: string;
 }
 
 const ButtonLink: React.SFC<ButtonProps> = ({
@@ -24,6 +25,7 @@ const ButtonLink: React.SFC<ButtonProps> = ({
   large,
   round,
   variant,
+  activeClassName,
   ...props
 }) => {
   if (to) return <Link to={to} {...props} />;

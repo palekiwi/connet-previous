@@ -21,7 +21,7 @@ export const I18nLink: React.SFC<I18nLinkProps> = ({
 
   if (internal && !file) {
     return (
-      <Link to={toWithLang} {...rest}>
+      <Link activeClassName="active" to={toWithLang} {...rest}>
         {children}
       </Link>
     );

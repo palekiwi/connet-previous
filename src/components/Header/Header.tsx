@@ -5,7 +5,6 @@ import { greatPrimer } from "src/theme/typography";
 import { weight, color, space, shadow } from "src/theme";
 import { desktop } from "src/theme/media";
 import { Link } from "src/components/Link";
-import { Button } from "src/components/Button";
 import { Container } from "src/components/Container";
 import { Logo } from "src/components/Logo";
 import Headroom from "react-headroom";
@@ -13,7 +12,6 @@ import { TopBar } from "./TopBar";
 
 const Wrapper = styled.div`
   background: ${color("primary.main")};
-  padding: ${space(3)} 0;
   box-shadow: ${shadow(1)};
   z-index: 5;
 `;
@@ -21,16 +19,8 @@ const Wrapper = styled.div`
 const Inner = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
   color: ${color("white.light")};
-`;
-
-const Trigger = styled.div`
-  display: block;
-  ${desktop(css`
-    display: none;
-  `)}
 `;
 
 const Nav = styled.nav`
@@ -40,12 +30,30 @@ const Nav = styled.nav`
 const NavItems = styled.div`
   display: none;
   ${desktop(css`
+    height: 100%;
     display: flex;
+    justify-content: center;
   `)}
+`;
+
+const NavItem = styled(Link)`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 ${space(3)};
+  border-bottom: 2px solid transparent;
+  transition: 400ms ease-out;
+  &:hover {
+    background: ${color("divider.light")};
+  }
+  &.active {
+    border-color: ${color("white.light")};
+  }
 `;
 
 export const Brand = styled(Link)`
   display: flex;
+  padding: ${space(3)};
   align-items: center;
   transition: all 400ms ease-out;
   cursor: pointer;
@@ -67,6 +75,13 @@ export const LogoWrapper = styled.div``;
 export const LogoImg = styled.img`
   width: auto;
   height: ${props => props.theme.dimensions[1]};
+`;
+
+const Trigger = styled.div`
+  display: block;
+  ${desktop(css`
+    display: none;
+  `)}
 `;
 
 interface HeaderProps {
@@ -102,9 +117,9 @@ export const Header: React.SFC<HeaderProps> = ({
             <Nav>
               <NavItems>
                 {navItems.map(x => (
-                  <Button to={x.to} key={x.to}>
+                  <NavItem to={x.to} key={x.to}>
                     {x.label}
-                  </Button>
+                  </NavItem>
                 ))}
               </NavItems>
               <Trigger>
