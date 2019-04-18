@@ -4,12 +4,13 @@ import { desktop, wide } from "src/theme/media";
 
 export const Container = styled.div`
   border: 1px solid ${color("grey.100")};
+  padding: 0 ${gap};
   margin: 0 auto;
   width: 100%;
   ${desktop(css`
-    max-width: calc(${widths[2]} - 2 * ${gap});
+    max-width: ${widths[2]};
   `)}
   ${wide(css`
-    max-width: calc(${widths[3]} - 2 * ${gap});
+    max-width: ${widths[3]};
   `)}
 `;

@@ -15,7 +15,7 @@ const radii = unit("px", [0, 2, 4, 8, 16, 32, 64, 128]);
 const lineHeights = [1.15, 1.25, 1.4, 1.5];
 const letterSpacings = ["normal", "-0.05", "0.1em", "0.25"];
 
-const g = 64;
+const g = 16;
 export const widths = mapToRem([
   0,
   769,
@@ -24,7 +24,7 @@ export const widths = mapToRem([
   1344 + 2 * g,
 ]);
 
-export const gap = rem(64);
+export const gap = rem(16);
 
 export const devices = widths.map(x => `@media (min-width: ${x})`);
 
