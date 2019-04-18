@@ -17,6 +17,7 @@ const Title = styled.h1`
   font-weight: ${weight("bold")};
   color: ${color("primary.main")};
 `;
+
 const Subtitle = styled.h4`
   ${doublePica}
   color: ${color("text.main")};

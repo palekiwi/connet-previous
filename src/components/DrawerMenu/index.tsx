@@ -7,12 +7,14 @@ import { Logo } from "src/components/Logo";
 import { CloseButton } from "./CloseButton";
 import { MenuButton } from "./MenuButton";
 import { useDrawer, DrawerWrapper } from "src/components/DrawerWrapper";
+import { color } from "src/theme";
 
 const DrawerContent = styled(Flex)`
   width: 100%;
   height: 100vh;
   position: relative;
   overflow-y: auto;
+  color: ${color("text.dark")};
 `;
 
 const LogoImg = styled(Image)`

@@ -38,7 +38,7 @@ const defaultStyle = css<ButtonProps>`
   border-color: transparent;
   border-radius: ${props => props.theme.radii[2]};
   background: transparent;
-  color: ${props => props.theme.colors.text.dark};
+  color: inherit;
   -webkit-tap-highlight-color: transparent;
   text-align: center;
   transition: all 400ms cubic-bezier(0.08, 0.52, 0.52, 1);
