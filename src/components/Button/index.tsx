@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
+import { radius, space, color } from "src/theme";
 
 import { Link } from "../../i18n";
 
@@ -34,19 +35,18 @@ const ButtonLink: React.SFC<ButtonProps> = ({
 
 const defaultStyle = css<ButtonProps>`
   cursor: pointer;
-  font-family: ${props => props.theme.fonts.sans};
   display: inline-block;
-  border: ${props => props.theme.borders[1]};
+  border: 1px solid;
   border-color: transparent;
-  border-radius: ${props => props.theme.radii[2]};
+  border-radius: ${radius(2)};
   background: transparent;
   color: inherit;
   -webkit-tap-highlight-color: transparent;
   text-align: center;
   transition: all 400ms cubic-bezier(0.08, 0.52, 0.52, 1);
-  padding: ${props => props.theme.sizes[2]} ${props => props.theme.sizes[3]};
+  padding: ${space(2)} ${space(3)};
   &:hover {
-    background: ${props => props.theme.colors.divider.light};
+    background: ${color("divider.light")};
   }
   &:active {
     outline: none;
@@ -54,9 +54,9 @@ const defaultStyle = css<ButtonProps>`
   ${props =>
     props.outlined &&
     css`
-      border-color: ${props.theme.colors.divider.light};
+      border-color: ${color("divider.light")};
       &:hover {
-        background: ${props.theme.colors.divider.light};
+        background: ${color("divider.light")};
       }
       &:focus {
         outline: none;
@@ -66,30 +66,30 @@ const defaultStyle = css<ButtonProps>`
     props.contained &&
     css`
       border-color: transparent;
-      background: ${props.theme.colors.divider.light};
-      color: ${props.theme.colors.text.dark};
+      background: ${color("divider.dark")};
+      color: ${color("text.dark")};
       &:hover {
-        background: ${props.theme.colors.divider.main};
+        background: ${color("divider.main")};
       }
     `}
 `;
 
 const primary = css<ButtonProps>`
-  color: ${props => props.theme.colors.primary.main};
+  color: ${color("primary.main")};
   &:hover {
-    background: ${props => props.theme.colors.divider.dark};
-    color: ${props => props.theme.colors.primary.dark};
+    background: ${color("divider.dark")};
+    color: ${color("primary.dark")};
   }
   &:focus {
-    background: ${props => props.theme.colors.grey[200]};
+    background: ${color("grey.200")};
   }
   ${props =>
     props.outlined &&
     css`
-      border-color: ${props.theme.colors.primary.main};
+      border-color: ${color("primary.main")};
       &:hover {
-        background: ${props.theme.colors.primary.main};
-        color: ${props.theme.colors.white.light};
+        background: ${color("primary.main")};
+        color: ${color("white.light")};
       }
       &:focus {
         outline: none;
@@ -98,33 +98,33 @@ const primary = css<ButtonProps>`
   ${props =>
     props.contained &&
     css`
-      border-color: ${props.theme.colors.primary.main};
-      background: ${props.theme.colors.primary.main};
-      color: ${props.theme.colors.white.main};
+      border-color: ${color("primary.main")};
+      background: ${color("primary.main")};
+      color: ${color("white.main")};
       &:hover {
-        background: ${props.theme.colors.primary.light};
-        color: ${props.theme.colors.white.main};
-        border-color: ${props.theme.colors.primary.light};
+        background: ${color("primary.light")};
+        color: ${color("white.main")};
+        border-color: ${color("primary.light")};
       }
     `}
 `;
 
 const secondary = css<ButtonProps>`
-  color: ${props => props.theme.colors.secondary.main};
+  color: ${color("secondary.main")};
   &:hover {
-    background: ${props => props.theme.colors.divider.light};
-    color: ${props => props.theme.colors.secondary.dark};
+    background: ${color("divider.light")};
+    color: ${color("secondary.dark")};
   }
   &:focus {
-    background: ${props => props.theme.colors.grey[200]};
+    background: ${color("grey.200")};
   }
   ${props =>
     props.outlined &&
     css`
-      border-color: ${props.theme.colors.secondary.main};
+      border-color: ${color("secondary.main")};
       &:hover {
-        background: ${props.theme.colors.secondary.main};
-        color: ${props.theme.colors.white.light};
+        background: ${color("secondary.main")};
+        color: ${color("white.light")};
       }
       &:focus {
         outline: none;
@@ -133,34 +133,34 @@ const secondary = css<ButtonProps>`
   ${props =>
     props.contained &&
     css`
-      border-color: ${props.theme.colors.secondary.main};
-      background: ${props.theme.colors.secondary.main};
-      color: ${props.theme.colors.white.light};
+      border-color: ${color("secondary.main")};
+      background: ${color("secondary.main")};
+      color: ${color("white.light")};
       &:hover {
-        background: ${props.theme.colors.secondary.light};
-        color: ${props.theme.colors.white.main};
-        border-color: ${props.theme.colors.secondary.light};
+        background: ${color("secondary.light")};
+        color: ${color("white.main")};
+        border-color: ${color("secondary.light")};
       }
     `}
 `;
 
 const white = css<ButtonProps>`
-  color: ${props => props.theme.colors.white.main};
+  color: ${props => color("white.main")};
   &:hover {
     background: rgba(255, 255, 255, 0.2);
-    color: ${props => props.theme.colors.white.light};
+    color: ${props => color("white.light")};
   }
   &:focus {
-    background: ${props => props.theme.colors.white.dark};
-    color: ${props => props.theme.colors.white.contrast};
+    background: ${color("white.dark")};
+    color: ${color("white.contrast")};
   }
   ${props =>
     props.outlined &&
     css`
-      border-color: ${props.theme.colors.white.light};
+      border-color: ${color("white.light")};
       &:hover {
-        background: ${props.theme.colors.white.light};
-        color: ${props.theme.colors.white.contrast};
+        background: ${color("white.light")};
+        color: ${color("white.contrast")};
       }
       &:focus {
         outline: none;
@@ -169,24 +169,22 @@ const white = css<ButtonProps>`
   ${props =>
     props.contained &&
     css`
-      background: ${props.theme.colors.white.light};
-      border-color: ${props.theme.colors.white.light};
-      color: ${props.theme.colors.white.contrast};
+      background: ${color("white.light")};
+      border-color: ${color("white.light")};
+      color: ${color("white.contrast")};
       &:hover {
-        background: ${props.theme.colors.white.main};
-        color: ${props.theme.colors.white.contrast};
+        background: ${color("white.main")};
+        color: ${color("white.contrast")};
       }
     `}
 `;
 
 const small = css<ButtonProps>`
-  padding: ${props => props.theme.sizes[1]} ${props => props.theme.sizes[2]};
-  font-size: ${props => props.theme.fontSizes[1]};
+  padding: $space(1)} $space(2)};
 `;
 
 const large = css<ButtonProps>`
-  padding: ${props => props.theme.sizes[3]} ${props => props.theme.sizes[3]};
-  font-size: ${props => props.theme.fontSizes[3]};
+  padding: ${space(3)} ${space(3)};
 `;
 
 const round = css<ButtonProps>`

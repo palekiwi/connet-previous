@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled } from "primithemes";
+import styled from "styled-components";
 import { animated } from "react-spring";
 import { useSlide } from "./drawerHooks";
 

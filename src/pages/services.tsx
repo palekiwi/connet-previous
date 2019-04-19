@@ -1,8 +1,8 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import { Image } from "../components/Image";
-import { Trafalgar, LongPrimer } from "src/components/Text";
-import { space } from "src/theme";
+import { color, space } from "src/theme";
+import { trafalgar, longPrimer } from "src/theme/typography";
 import { tablet, desktop } from "src/theme/media";
 import styled, { css } from "styled-components";
 import { Button } from "src/components/Button";
@@ -10,12 +10,10 @@ import { Section } from "../components/Section";
 import { Banner } from "../components/Banner";
 
 const Img = styled(Image)`
-  ${props => props.theme.devices[0]} {
-    max-height: 300px;
-  }
-  ${props => props.theme.devices[2]} {
+  max-height: 300px;
+  ${desktop(css`
     max-height: 100%;
-  }
+  `)}
 `;
 
 interface ServiceNode {
@@ -86,14 +84,15 @@ const ContentWrapper = styled.div`
   `)}
 `;
 
-const Title = styled(Trafalgar)`
-  font-weight: 700;
-  margin-bottom: ${props => props.theme.sizes[2]};
+const Title = styled.h2`
+  ${trafalgar};
+  margin-bottom: ${space(2)};
 `;
-const Subtitle = styled(LongPrimer)`
-  font-size: ${props => props.theme.fontSizes[3]};
-  margin-bottom: ${props => props.theme.sizes[2]};
-  color: ${props => props.theme.colors.text.main};
+
+const Subtitle = styled.div`
+  ${longPrimer};
+  margin-bottom: ${space(2)};
+  color: ${color("text.main")};
 `;
 
 const Actions = styled.div`

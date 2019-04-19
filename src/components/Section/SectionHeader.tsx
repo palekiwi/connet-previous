@@ -1,5 +1,23 @@
 import * as React from "react";
-import { Flex, Text } from "primithemes";
+import styled from "styled-components";
+import { color, space, weight } from "src/theme";
+
+const Wrapper = styled.div`
+  margin: ${space(3)};
+  margin-top: ${space(4)};
+  flex-direction: column;
+  max-width: 600;
+  text-align: center;
+`;
+
+const Title = styled.h2`
+  font-weight: ${weight("thin")};
+  color: ${color("text.dark")};
+`;
+const Subtitle = styled.div`
+  margin-top: ${space(4)};
+  color: ${color("primary.main")};
+`;
 
 interface Props {
   title: React.ReactNode;
@@ -11,40 +29,9 @@ export const SectionHeader: React.SFC<Props> = ({
   children,
   title,
   subtitle,
-  body,
 }) => (
-  <Flex mt={4} m={3} flexDirection="column" style={{ maxWidth: 600 }}>
-    <Text
-      textAlign="center"
-      is="h2"
-      fontWeight={2}
-      fontSize={[5, 5, 6]}
-      color="text.dark"
-    >
-      {title}
-    </Text>
-    {!!subtitle && (
-      <Text
-        mt={3}
-        fontWeight={3}
-        fontSize={3}
-        color="primary.main"
-        textAlign="center"
-      >
-        {subtitle}
-      </Text>
-    )}
-    {!!body &&
-      body.map((x, i) => (
-        <Text
-          mt={3}
-          color="text.dark"
-          textAlign="center"
-          lineHeight={2}
-          key={i}
-        >
-          {x}
-        </Text>
-      ))}
-  </Flex>
+  <Wrapper>
+    <Title>{title}</Title>
+    {!!subtitle && <Subtitle>{subtitle}</Subtitle>}
+  </Wrapper>
 );

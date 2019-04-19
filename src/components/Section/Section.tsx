@@ -1,8 +1,11 @@
 import * as React from "react";
-import { Card } from "primithemes";
+import styled from "styled-components";
 
-export const Section: React.SFC<{}> = ({ children }) => (
-  <Card w={1} alignItems="center" flexDirection="column">
-    {children}
-  </Card>
-);
+const Card = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+`;
+
+export const Section: React.SFC<{}> = ({ children }) => <Card>{children}</Card>;

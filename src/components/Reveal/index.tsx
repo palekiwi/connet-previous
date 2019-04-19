@@ -1,6 +1,6 @@
 import * as React from "react";
 import TV from "react-on-screen";
-import { styled } from "primithemes";
+import styled from "styled-components";
 
 const FadeDiv = styled.div<{ isVisible?: boolean }>`
   opacity: ${props => (props.isVisible ? 1 : 0)};

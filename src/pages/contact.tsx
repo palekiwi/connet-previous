@@ -2,7 +2,7 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import styled, { css } from "styled-components";
 import { radius, shadow, space, color } from "src/theme";
-import { desktop } from "src/theme/media";
+import { tablet, desktop } from "src/theme/media";
 import { Container } from "../components/Container";
 import { trafalgar, longPrimer } from "src/theme/typography";
 import { Phone } from "styled-icons/material/Phone";
@@ -106,12 +106,12 @@ const ContactCard = styled.div`
   overflow: hidden;
   color: ${color("text.dark")};
   margin: ${space(4)} 0;
-  ${props => props.theme.devices[1]} {
+  ${tablet(css`
     border-radius: ${radius(2)};
     box-shadow: ${shadow(1)};
     margin-left: ${space(3)};
     margin-right: ${space(3)};
-  }
+  `)}
 `;
 
 const ContactPage: React.SFC<Props> = ({ data: { content } }) => {

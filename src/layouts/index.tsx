@@ -1,8 +1,8 @@
 import * as React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import { ThemeProvider, createGlobalStyle } from "styled-components";
-import { defaultTheme } from "src/theme";
+import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
+import { color } from "src/theme";
 import { FormattedMessage } from "react-intl";
 import { nav as navMessages } from "./Layout.messages";
 import { IntlProvider, addLocaleData } from "react-intl";
@@ -50,7 +50,7 @@ const Main = styled.div`
   width: 100%;
   flex-direction: column;
   margin: 0 auto;
-  background: ${props => props.theme.colors.background.main};
+  background: ${color("background.main")};
   flex-grow: 1;
 `;
 
@@ -149,28 +149,26 @@ export const Layout: React.SFC<Props> = ({ children, ...props }) => {
           throw `Settings could not be loaded for ${locale}`;
         return (
           <IntlProvider locale={locale} messages={messages}>
-            <ThemeProvider theme={defaultTheme}>
-              <Root>
-                <Normalize />
-                <GlobalStyle />
-                <Head title={settings.node.frontmatter.title} />
-                <Content>
-                  <Policy content={cookiePolicy.node} />
-                  <Header
-                    title={settings.node.frontmatter.title}
-                    navItems={nav}
-                    logo={null}
-                  />
-                  <Main>{children}</Main>
-                  <Footer
-                    logo={null}
-                    email={settings.node.frontmatter.contacts[0].email}
-                    phone={settings.node.frontmatter.contacts[0].phone}
-                    title={settings.node.frontmatter.title}
-                  />
-                </Content>
-              </Root>
-            </ThemeProvider>
+            <Root>
+              <Normalize />
+              <GlobalStyle />
+              <Head title={settings.node.frontmatter.title} />
+              <Content>
+                <Policy content={cookiePolicy.node} />
+                <Header
+                  title={settings.node.frontmatter.title}
+                  navItems={nav}
+                  logo={null}
+                />
+                <Main>{children}</Main>
+                <Footer
+                  logo={null}
+                  email={settings.node.frontmatter.contacts[0].email}
+                  phone={settings.node.frontmatter.contacts[0].phone}
+                  title={settings.node.frontmatter.title}
+                />
+              </Content>
+            </Root>
           </IntlProvider>
         );
       }}

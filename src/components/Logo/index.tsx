@@ -1,5 +1,6 @@
 import * as React from "react";
-import { css, styled } from "primithemes";
+import styled, { css } from "styled-components";
+import { color } from "src/theme";
 import { darken } from "src/utils/helpers";
 
 interface Props {
@@ -10,14 +11,14 @@ interface Props {
 
 const original = css`
   & #text-main {
-    fill: ${props => props.theme.colors.primary.main};
+    fill: ${color("primary.main")};
   }
   & #text-shadow {
-    fill: ${props => darken(props.theme.colors.primary.main)(0.2)};
+    fill: ${darken(color("primary.main"))(0.2)};
     opacity: 1;
   }
   & #elipse-full {
-    fill: ${props => props.theme.colors.secondary.main};
+    fill: ${color("secondary.main")};
     opacity: 1;
   }
   & #elipse-alt {
