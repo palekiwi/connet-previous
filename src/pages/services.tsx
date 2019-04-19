@@ -2,11 +2,12 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import { Image } from "../components/Image";
 import { Trafalgar, LongPrimer } from "src/components/Text";
-import styled from "styled-components";
+import { space } from "src/theme";
+import { tablet, desktop } from "src/theme/media";
+import styled, { css } from "styled-components";
 import { Button } from "src/components/Button";
 import { Section } from "../components/Section";
 import { Banner } from "../components/Banner";
-import { Container } from "../components/Container";
 
 const Img = styled(Image)`
   ${props => props.theme.devices[0]} {
@@ -50,28 +51,39 @@ interface ServicesProps {
 const Service = styled.div`
   display: flex;
   width: 100%;
-  flex-wrap: wrap;
-  flex-direction: row;
-  background: linear-gradient(30deg, hsl(0, 0%, 100%), hsl(0, 0%, 93%));
+  flex-direction: column;
+  ${tablet(css`
+    flex-direction: row;
+  `)}
 `;
 
 const ImgWrapper = styled.div`
   width: 100%;
-  ${props => props.theme.devices[2]} {
-    width: 50%;
-  }
+`;
+
+const ContentPane = styled.div`
+  background: linear-gradient(30deg, hsl(0, 0%, 100%), hsl(0, 0%, 93%));
+  width: 100%;
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
-  padding: ${props => props.theme.sizes[4]} ${props => props.theme.sizes[3]};
+  padding: ${space(4)} ${space(3)};
   flex-direction: column;
-  align-items: center;
+  text-align: center;
   justify-content: center;
+  height: 100%;
   width: 100%;
-  ${props => props.theme.devices[2]} {
-    width: 50%;
-  }
+  ${tablet(css`
+    padding-left: ${space(5)};
+    padding-right: ${space(5)};
+    text-align: left;
+  `)}
+  ${desktop(css`
+    padding-left: ${space(6)};
+    padding-right: ${space(6)};
+    text-align: left;
+  `)}
 `;
 
 const Title = styled(Trafalgar)`
@@ -84,6 +96,10 @@ const Subtitle = styled(LongPrimer)`
   color: ${props => props.theme.colors.text.main};
 `;
 
+const Actions = styled.div`
+  margin-top: ${space(2)};
+`;
+
 const ServicesPage: React.SFC<ServicesProps> = ({
   data: { content, services },
 }) => {
@@ -94,22 +110,24 @@ const ServicesPage: React.SFC<ServicesProps> = ({
         image={content.frontmatter.image}
       />
       <Section>
-        <Container>
-          {services.edges.map(({ node }, i) => (
-            <Service key={i}>
-              <ImgWrapper>
-                <Img style={{ width: "100%" }} fluid={node.frontmatter.image} />
-              </ImgWrapper>
+        {services.edges.map(({ node }, i) => (
+          <Service key={i}>
+            <ImgWrapper>
+              <Img style={{ width: "100%" }} fluid={node.frontmatter.image} />
+            </ImgWrapper>
+            <ContentPane>
               <ContentWrapper>
                 <Title>{node.frontmatter.title}</Title>
                 <Subtitle>{node.frontmatter.subtitle}</Subtitle>
-                <Button to={node.fields.slug} variant="primary" contained>
-                  Learn More
-                </Button>
+                <Actions>
+                  <Button to={node.fields.slug} variant="primary" contained>
+                    Learn More
+                  </Button>
+                </Actions>
               </ContentWrapper>
-            </Service>
-          ))}
-        </Container>
+            </ContentPane>
+          </Service>
+        ))}
       </Section>
     </>
   );
