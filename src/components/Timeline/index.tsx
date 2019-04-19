@@ -2,13 +2,15 @@ import * as React from "react";
 import { Container } from "../Container";
 import { Line, Wrapper, Marker, ProjectCard } from "./timelineStyles";
 import styled from "styled-components";
+import { weight, color, space } from "src/theme";
 import {
-  Trafalgar,
-  DoublePica,
-  Paragon,
-  GreatPrimer,
-  Brevier,
-} from "src/components/Text";
+  paragon,
+  trafalgar,
+  doublePica,
+  greatPrimer,
+  pica,
+  longPrimer,
+} from "src/theme/typography";
 
 interface TimelineItem {
   node: {
@@ -28,43 +30,51 @@ interface Props {
 }
 
 const Section = styled.section`
-  background: ${props => props.theme.colors.grey[200]};
+  background: ${color("grey.200")};
   width: 100%;
+  padding: ${space(4)} ${space(3)};
 `;
 const Header = styled.div`
   text-align: center;
-  padding: ${props => props.theme.sizes[3]};
 `;
 
-const Title = styled(Trafalgar)`
-  text-color: ${props => props.theme.colors.text.main};
-  font-weight: 700;
-  margin-bottom: ${props => props.theme.sizes[2]};
+const Title = styled.h1`
+  ${trafalgar};
+  color: ${color("text.main")};
+  font-weight: ${weight("bold")};
+  margin-bottom: 0;
 `;
-const Subtitle = styled(DoublePica)``;
+const Subtitle = styled.h5`
+  ${doublePica};
+  margin-bottom: 0;
+`;
 
 const Items = styled.div`
-  margin: ${props => props.theme.sizes[3]};
+  margin: ${space(3)};
 `;
 
-const Year = styled(Paragon)`
-  margin-bottom: ${props => props.theme.sizes[1]};
-  font-size: ${props => props.theme.fontSizes[4]};
-  font-weight: ${props => props.theme.fontWeights[2]};
-  color: ${props => props.theme.colors.primary.main};
+const Year = styled.h3`
+  ${paragon};
+  color: ${color("primary.main")};
+  margin-bottom: ${space(2)};
+  font-weight: ${weight("thin")};
 `;
 
-const PTitle = styled(GreatPrimer)`
-  margin-bottom: ${props => props.theme.sizes[2]};
-  color: ${props => props.theme.colors.text.main};
+const PTitle = styled.h5`
+  ${greatPrimer};
+  color: ${color("text.dark")};
+  margin-bottom: ${space(2)};
 `;
 
-const Customer = styled(GreatPrimer)`
-  margin-bottom: ${props => props.theme.sizes[2]};
+const Customer = styled.div`
+  ${pica};
+  color: ${color("secondary.main")};
+  margin-bottom: ${space(0)};
 `;
 
-const Location = styled(Brevier)`
-  margin-bottom: ${props => props.theme.sizes[2]};
+const Location = styled.small`
+  ${longPrimer};
+  color: ${color("text.main")};
 `;
 
 const Timeline: React.SFC<Props> = ({ title, subtitle, items }) => (
@@ -76,9 +86,9 @@ const Timeline: React.SFC<Props> = ({ title, subtitle, items }) => (
     <Container>
       <Items>
         {items.map(({ node }, i) => (
-          <Line key={i} bg="grey.200" p={3} w={1}>
+          <Line key={i}>
             <Wrapper i={i}>
-              <Marker bg="grey.300" b={4} borderColor="grey.200" />
+              <Marker />
               <ProjectCard i={i}>
                 <Year as="h3">{node.frontmatter.date}</Year>
                 <PTitle>{node.frontmatter.title}</PTitle>

@@ -1,10 +1,15 @@
-import { styled, css, Box, Flex, Card } from "primithemes";
+import { color, space, radius } from "src/theme";
+import styled, { css } from "styled-components";
+import { phone, desktop } from "src/theme/media";
 
-export const Line = styled(Flex)`
+export const Line = styled.div`
+  background: ${color("grey.200")};
+  width: 100%;
+  padding: ${space(3)};
   position: relative;
   &::before {
     content: "";
-    background: ${props => props.theme.colors.grey[500]};
+    background: ${color("grey.500")};
     height: 100%;
     width: 1px;
     position: absolute;
@@ -12,20 +17,22 @@ export const Line = styled(Flex)`
     left: 0%;
     margin-left: 16px;
     transform: translateX(-50%);
-    ${props => props.theme.devices[2]} {
+    ${desktop(css`
       left: 50%;
       margin-left: 0;
-    }
+    `)}
   }
 `;
 
-export const Marker = styled(Card)`
+export const Marker = styled.div`
   position: absolute;
   transform: translateX(-50%);
   top: 14px;
   height: 36px;
   width: 36px;
   border-radius: 50%;
+  background: ${color("grey.300")};
+  border: 4px solid ${color("grey.200")};
 `;
 
 export const WrapperLeft = css`
@@ -46,18 +53,22 @@ export const WrapperRight = css`
   }
 `;
 
-export const Wrapper = styled(Box)<{ i: number }>`
+interface Props {
+  i: number;
+}
+
+export const Wrapper = styled.div<Props>`
   ${WrapperRight}
   position: relative;
   left: 0%;
   width: 100%;
   padding: 0;
   padding-left: 38px;
-  ${props => props.theme.devices[2]} {
+  ${desktop(css<Props>`
     ${props => (props.i % 2 === 0 ? WrapperRight : WrapperLeft)};
     margin-top: ${props => (props.i === 0 ? 0 : -60)}px;
     width: 50%;
-  }
+  `)}
 `;
 
 export const arrow = css`
@@ -96,18 +107,18 @@ const rightCard = css`
   ${rightArrow}
 `;
 
-export const ProjectCard = styled.div<{ i: number }>`
+export const ProjectCard = styled.div<Props>`
   filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.14));
   overflow: visible;
   position: relative;
-  border-radius: ${props => props.theme.radii[2]};
+  border-radius: ${radius(2)};
   width: 100%;
-  padding: ${props => props.theme.sizes[3]} ${props => props.theme.sizes[4]};
-  background: ${props => props.theme.colors.background.light};
-  ${props => props.theme.devices[0]} {
+  padding: ${space(3)} ${space(4)};
+  background: ${color("background.light")};
+  ${phone(css<Props>`
     ${leftCard}
-  }
-  ${props => props.theme.devices[2]} {
+  `)}
+  ${desktop(css<Props>`
     ${props => (props.i % 2 === 0 ? leftCard : rightCard)}
-  }
+  `)}
 `;

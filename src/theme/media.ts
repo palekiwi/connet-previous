@@ -7,6 +7,7 @@ const media = (idx: number) => (inner: any) => css`
   }
 `;
 
+export const phone = media(0);
 export const tablet = media(1);
 export const desktop = media(2);
 export const wide = media(3);
