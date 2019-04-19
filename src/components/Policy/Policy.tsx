@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
-import { color } from "src/theme";
+import { color, space } from "src/theme";
 import { desktop } from "src/theme/media";
 import { Button } from "src/components/Button";
 import { Container } from "src/components/Container";
@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
+  padding: ${space(3)};
 `;
 
 const Columns = styled.div`
@@ -48,9 +49,11 @@ const Policy: React.SFC<Props> = ({ content }) => {
       <Container>
         <Columns>
           <Content dangerouslySetInnerHTML={{ __html: content.html }} />
-          <Button onClick={handleAccept} outlined>
-            Accept
-          </Button>
+          <div>
+            <Button onClick={handleAccept} outlined>
+              Accept
+            </Button>
+          </div>
         </Columns>
       </Container>
     </Wrapper>
