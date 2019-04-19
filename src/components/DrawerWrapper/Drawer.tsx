@@ -9,8 +9,9 @@ interface Props {
 }
 
 const Dmenu = styled(animated.div)`
-  position: absolute;
+  position: fixed;
   z-index: 1;
+  height: 100vh;
   top: 0;
   right: 0;
   overflow-x: hidden;

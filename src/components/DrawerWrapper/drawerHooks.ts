@@ -6,7 +6,7 @@ import {
   BodyScrollOptions,
 } from "body-scroll-lock";
 
-const useToggle = () => {
+export const useToggle = () => {
   const [show, set] = useState(false);
   const open = () => {
     set(true);
@@ -19,7 +19,7 @@ const useToggle = () => {
   return { show, open, close };
 };
 
-const useKeyDown = (show: boolean, close: () => void) => {
+export const useKeyDown = (show: boolean, close: () => void) => {
   useEffect(() => {
     const handler = (e: any) => {
       if (e.keyCode === 27) close();
@@ -30,17 +30,17 @@ const useKeyDown = (show: boolean, close: () => void) => {
   }, [show]);
 };
 
-const useDisableBodyScroll = (show: boolean) => {
-  const options: BodyScrollOptions = { reserveScrollBarGap: true };
-  useEffect(() => {
-    if (show) disableBodyScroll(document.body, options);
-    else enableBodyScroll(document.body);
-  }, [show]);
-};
+// const useDisableBodyScroll = (show: boolean) => {
+//   const options: BodyScrollOptions = { reserveScrollBarGap: true };
+//   useEffect(() => {
+//     if (show) disableBodyScroll(document.body, options);
+//     else enableBodyScroll(document.body);
+//   }, [show]);
+// };
 
 export const useDrawer = () => {
   const { show, open, close } = useToggle();
-  useDisableBodyScroll(show);
+  //useDisableBodyScroll(show);
   useKeyDown(show, close);
   return { show, open, close };
 };

@@ -25,11 +25,19 @@ interface DrawerMenuProps {
   logo?: any;
   title?: React.ReactNode;
   navItems: { to: string; label: React.ReactNode }[];
+  show: boolean;
+  open: any;
+  close: any;
 }
 
-const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo, title, navItems }) => {
-  const { show, open, close } = useDrawer();
-
+const DrawerMenu: React.SFC<DrawerMenuProps> = ({
+  show,
+  open,
+  close,
+  logo,
+  title,
+  navItems,
+}) => {
   return (
     <DrawerWrapper
       trigger={<MenuButton />}
