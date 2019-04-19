@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
-import { space } from "src/theme";
-import { tablet, desktop } from "src/theme/media";
+import { space, color } from "src/theme";
+import { tablet, wide } from "src/theme/media";
 import { Content } from "src/components/Content";
 import { FadeIn } from "../Reveal";
 import { Container } from "../Container";
@@ -21,19 +21,22 @@ interface AboutSummaryProps {
   highlights: Highlight[];
 }
 
-const Wrapper = styled.div``;
+const Wrapper = styled.section`
+  background: ${color("background.light")};
+  padding: ${space(5)} ${space(3)};
+`;
 
 const ContentWrapper = styled.div`
-  padding: ${space(3)};
   text-align: center;
+  margin: 0 auto;
+  width: 100%;
   ${tablet(css`
-    padding-left: 10%;
-    padding-right: 10%;
+    width: 80%;
   `)}
-  ${desktop(css`
-    padding-left: 20%;
-    padding-right: 20%;
+  ${wide(css`
+    width: 60%;
   `)}
+  margin-bottom: ${space(3)};
 `;
 
 const AboutSummary: React.SFC<AboutSummaryProps> = ({
@@ -45,26 +48,20 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
 }) => {
   return (
     <Wrapper>
-      {markdown && (
-        <Container>
-          <ContentWrapper>
-            <Content dangerouslySetInnerHTML={{ __html: markdown }} />
-          </ContentWrapper>
-        </Container>
-      )}
-      {!!highlights && (
-        <Container>
-          <Tiles gutter={3}>
-            {highlights.map((h, i) => (
-              <Tile w={[1, 1 / 2, 1 / 4]} key={i}>
-                <FadeIn once style={{ width: "100%" }}>
-                  <Highlight title={h.title} subtitle={h.subtitle} />
-                </FadeIn>
-              </Tile>
-            ))}
-          </Tiles>
-        </Container>
-      )}
+      <Container>
+        <ContentWrapper>
+          <Content dangerouslySetInnerHTML={{ __html: markdown }} />
+        </ContentWrapper>
+        <Tiles gutter={3}>
+          {highlights.map((h, i) => (
+            <Tile w={[1, 1 / 2, 1 / 4]} key={i}>
+              <FadeIn once style={{ width: "100%" }}>
+                <Highlight title={h.title} subtitle={h.subtitle} />
+              </FadeIn>
+            </Tile>
+          ))}
+        </Tiles>
+      </Container>
     </Wrapper>
   );
 };

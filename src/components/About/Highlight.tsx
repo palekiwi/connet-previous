@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 
 const Title = styled.h5`
   ${trafalgar}
-  color: ${color("primary.main")};
+  color: ${color("secondary.main")};
   font-weight: ${weight("thin")};
   margin-bottom: ${space(2)}
 `;

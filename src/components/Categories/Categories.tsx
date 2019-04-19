@@ -1,8 +1,9 @@
 import * as React from "react";
 import { Image } from "src/components/Image";
 import { Button } from "src/components/Button";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { weight, space, color, radius, shadow } from "src/theme";
+import { tablet, wide } from "src/theme/media";
 import { Container } from "src/components/Container";
 import { Tiles, Tile } from "src/components/Tiles";
 import { greatPrimer, longPrimer } from "src/theme/typography";
@@ -28,8 +29,21 @@ type Props = {
   gradient?: string;
 };
 
-const Wrapper = styled.div`
-  padding: ${space(4)} 0;
+const Wrapper = styled.section`
+  padding: ${space(5)} ${space(3)};
+`;
+
+const ContentWrapper = styled.div`
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+  ${tablet(css`
+    width: 80%;
+  `)}
+  ${wide(css`
+    width: 60%;
+  `)}
+  margin-bottom: ${space(3)};
 `;
 
 const Card = styled.div`
@@ -74,18 +88,15 @@ const Categories: React.SFC<Props> = ({
   categoryLinks,
 }) => (
   <Wrapper>
-    {markdown && (
-      <Container>
-        <Content
-          dangerouslySetInnerHTML={{ __html: markdown }}
-          style={{ textAlign: "center" }}
-        />
-      </Container>
-    )}
+    <Container>
+      <ContentWrapper>
+        <Content dangerouslySetInnerHTML={{ __html: markdown }} />
+      </ContentWrapper>
+    </Container>
     <Container>
       <Tiles gutter={3}>
         {categoryLinks.map((x, i) => (
-          <Tile key={i} w={[1, 1 / 2, 1 / 4]}>
+          <Tile key={i} w={[1, 1 / 2, 1 / 2, 1 / 4]}>
             <FadeIn once style={{ width: "100%", height: "100%" }}>
               <Card key={x.to}>
                 <Image style={{ height: 140 }} fluid={x.image} />

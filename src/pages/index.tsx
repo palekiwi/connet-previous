@@ -3,7 +3,6 @@ import { graphql } from "gatsby";
 import { Banner } from "src/components/Banner";
 import { AboutSummary } from "src/components/About";
 import { Categories } from "src/components/Categories";
-import styled from "styled-components";
 
 interface ServiceNode {
   node: {
@@ -53,10 +52,6 @@ interface Props {
   };
 }
 
-const Section = styled.section`
-  background: ${props => props.theme.colors.background.light};
-`;
-
 const IndexPage: React.SFC<Props> = ({
   data: { content, welcomeSection, servicesSection, companyFacts, services },
 }) => {
@@ -66,29 +61,25 @@ const IndexPage: React.SFC<Props> = ({
         title={content.frontmatter.title}
         image={content.frontmatter.image}
       />
-      <Section>
-        <AboutSummary
-          title={welcomeSection.frontmatter.title}
-          markdown={welcomeSection.html}
-          highlights={companyFacts.frontmatter.facts.map(f => ({
-            title: f.value,
-            subtitle: f.title,
-          }))}
-        />
-      </Section>
-      <div>
-        <Categories
-          title={servicesSection.frontmatter.title}
-          markdown={servicesSection.html}
-          categoryLinks={services.edges.map(({ node }) => ({
-            label: node.frontmatter.title,
-            text: node.frontmatter.subtitle,
-            image: node.frontmatter.image,
-            to: node.fields.slug,
-            buttonText: "Learn More",
-          }))}
-        />
-      </div>
+      <AboutSummary
+        title={welcomeSection.frontmatter.title}
+        markdown={welcomeSection.html}
+        highlights={companyFacts.frontmatter.facts.map(f => ({
+          title: f.value,
+          subtitle: f.title,
+        }))}
+      />
+      <Categories
+        title={servicesSection.frontmatter.title}
+        markdown={servicesSection.html}
+        categoryLinks={services.edges.map(({ node }) => ({
+          label: node.frontmatter.title,
+          text: node.frontmatter.subtitle,
+          image: node.frontmatter.image,
+          to: node.fields.slug,
+          buttonText: "Learn More",
+        }))}
+      />
     </>
   );
 };
