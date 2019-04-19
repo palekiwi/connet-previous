@@ -36,7 +36,7 @@ export const canon = css`
 // Article title or section header
 export const trafalgar = css`
   ${base}
-  font-size: ${rem(26)};
+  font-size: ${rem(28)};
   line-height: ${lineHeight(1)};
 
   ${tablet(css`

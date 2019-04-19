@@ -1,16 +1,21 @@
 import * as React from "react";
 import { injectIntl, InjectedIntlProps } from "react-intl";
 import { languages } from "../../i18n";
-import { styled, Box, Flex } from "primithemes";
+import styled from "styled-components";
 import { Link } from "gatsby";
-import { Text } from "src/components/Text";
+import { color, space } from "src/theme";
 
 export type LangsContainerProps = {} & InjectedIntlProps;
 
-const LangItem = styled(Box)`
+const Wrapper = styled.div`
+  display: flex;
+`;
+const LangItem = styled.div<{ active: boolean }>`
+  padding: ${space(2)};
   &:hover {
-    background: ${props => props.theme.colors.grey[100]};
+    background: ${color("grey.100")};
   }
+  color: ${props => (props.active ? color("text.dark") : color("text.light"))};
 `;
 
 export const LangsContainer = injectIntl(
@@ -23,24 +28,17 @@ export const LangsContainer = injectIntl(
 
     render() {
       return (
-        <Flex>
+        <Wrapper>
           {languages.map(({ name, code }) => (
             <Link
               key={code}
               to={"/" + code}
               onClick={() => this.handleClick(code)}
             >
-              <LangItem p={2}>
-                <Text
-                  fontSize={1}
-                  color={this.isActive(code) ? "text.dark" : "text.light"}
-                >
-                  {name}
-                </Text>
-              </LangItem>
+              <LangItem active={this.isActive(code)}>{name}</LangItem>
             </Link>
           ))}
-        </Flex>
+        </Wrapper>
       );
     }
   }
