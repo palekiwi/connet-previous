@@ -4,35 +4,39 @@ import { Banner } from "../components/Banner";
 import { Section } from "../components/Section";
 import { Timeline } from "../components/Timeline";
 import { Button } from "../components/Button";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { color, space } from "src/theme";
+import { tablet, wide } from "src/theme/media";
 import { Container } from "../components/Container";
 import { Content } from "src/components/Content";
 
 const Intro = styled.div`
-  background: ${props => props.theme.colors.background.light};
+  background: ${color("background.white")};
   width: 100%;
-  padding: ${props => props.theme.sizes[4]} 0;
-`;
-const Tiles = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: ${props => props.theme.sizes[3]} 0;
+  padding: ${space(4)} ${space(3)};
 `;
 
-const Tile = styled.div`
-  padding: ${props => props.theme.sizes[1]};
-`;
-
-const StyledContent = styled(Content)`
-  width: 100%;
-  max-width: 660px;
-  margin: 0 auto;
-  padding: 0 ${props => props.theme.sizes[3]};
-  ${props => props.theme.devices[2]} {
-    padding: 0;
-  }
+const ContentWrapper = styled.div`
   text-align: center;
+  margin: 0 auto;
+  width: 100%;
+  ${tablet(css`
+    width: 80%;
+  `)}
+  ${wide(css`
+    width: 60%;
+  `)}
+  margin-bottom: ${space(3)};
+`;
+
+const Links = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  & ${Button} {
+    margin: ${space(1)};
+  }
 `;
 
 interface ServiceNode {
@@ -94,17 +98,17 @@ const AboutTemplate: React.SFC<AboutTemplateProps> = ({ data }) => {
       <Section>
         <Intro>
           <Container>
-            <StyledContent dangerouslySetInnerHTML={{ __html: content.html }} />
-          </Container>
-          <Tiles>
-            {services.edges.map(({ node }, i) => (
-              <Tile key={i}>
+            <ContentWrapper>
+              <Content dangerouslySetInnerHTML={{ __html: content.html }} />
+            </ContentWrapper>
+            <Links>
+              {services.edges.map(({ node }, i) => (
                 <Button to={node.fields.slug} contained variant="primary">
                   {node.frontmatter.title}
                 </Button>
-              </Tile>
-            ))}
-          </Tiles>
+              ))}
+            </Links>
+          </Container>
         </Intro>
         <Timeline
           title={content.frontmatter.referencesSection.title}
