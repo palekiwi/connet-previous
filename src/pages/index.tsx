@@ -53,7 +53,7 @@ interface Props {
   };
 }
 
-const Section = styled.div`
+const Section = styled.section`
   background: ${props => props.theme.colors.background.light};
 `;
 

@@ -1,23 +1,35 @@
 import * as React from "react";
-import { Flex, Text } from "primithemes";
-import { Logo } from "src/components/Logo";
+import { weight, space, color } from "src/theme";
+import { foolscap, doublePica } from "src/theme/typography";
+import styled from "styled-components";
+
+const Page = styled.div`
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Title = styled.h1`
+  ${foolscap};
+  margin: ${space(3)};
+  color: ${color("secondary.main")};
+  font-weight: ${weight("bold")};
+`;
+
+const Subtitle = styled.p`
+  ${doublePica};
+  color: ${color("text.main")};
+`;
 
 const NotFound: React.SFC<{}> = () => {
   return (
-    <Flex
-      style={{ flexGrow: 1, height: "100%" }}
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
-    >
-      <Logo width={400} />
-      <Text m={3} is="h1" fontSize={[6, 6, 7]} color="secondary.main">
-        404
-      </Text>
-      <Text is="h2" color="text.main">
-        Not Found
-      </Text>
-    </Flex>
+    <Page>
+      <Title>404</Title>
+      <Subtitle>Not Found</Subtitle>
+    </Page>
   );
 };
 
