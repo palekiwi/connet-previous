@@ -4,9 +4,8 @@ import { Banner } from "../components/Banner";
 import { Section } from "../components/Section";
 import { Timeline } from "../components/Timeline";
 import { Button } from "../components/Button";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { color, space } from "src/theme";
-import { tablet, wide } from "src/theme/media";
 import { Container } from "../components/Container";
 import { Content } from "src/components/Content";
 
@@ -18,14 +17,7 @@ const Intro = styled.div`
 
 const ContentWrapper = styled.div`
   text-align: center;
-  margin: 0 auto;
   width: 100%;
-  ${tablet(css`
-    width: 80%;
-  `)}
-  ${wide(css`
-    width: 60%;
-  `)}
   margin-bottom: ${space(3)};
 `;
 

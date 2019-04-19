@@ -1,7 +1,6 @@
 import * as React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { space, color } from "src/theme";
-import { tablet, wide } from "src/theme/media";
 import { Content } from "src/components/Content";
 import { FadeIn } from "../Reveal";
 import { Container } from "../Container";
@@ -28,14 +27,7 @@ const Wrapper = styled.section`
 
 const ContentWrapper = styled.div`
   text-align: center;
-  margin: 0 auto;
   width: 100%;
-  ${tablet(css`
-    width: 80%;
-  `)}
-  ${wide(css`
-    width: 60%;
-  `)}
   margin-bottom: ${space(3)};
 `;
 

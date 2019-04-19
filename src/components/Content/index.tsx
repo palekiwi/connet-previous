@@ -1,9 +1,12 @@
 import styled from "styled-components";
 import { weight, color } from "src/theme";
+import { rem } from "src/theme/utils";
 import { trafalgar, paragon, bodyCopy } from "src/theme/typography";
 
 export const Content = styled.div`
   width: 100%;
+  margin: 0 auto;
+  max-width: ${rem(768)};
   overflow: auto;
   box-sizing: border-box;
   color: ${color("text.dark")};

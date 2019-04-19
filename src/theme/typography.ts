@@ -96,10 +96,6 @@ export const longPrimer = css`
   ${base}
   font-size: ${rem(15)};
   line-height: ${lineHeight(3)};
-
-  ${tablet(css`
-    font-size: ${rem(14)};
-  `)}
 `;
 
 // Time stamps and bylines
@@ -107,10 +103,6 @@ export const brevier = css`
   ${base}
   font-size: ${rem(14)};
   line-height: ${lineHeight(3)};
-
-  ${tablet(css`
-    font-size: ${rem(13)};
-  `)}
 `;
 
 // small header capitals
@@ -118,8 +110,4 @@ export const minion = css`
   ${base}
   font-size: ${rem(12)};
   line-height: ${lineHeight(3)};
-
-  ${tablet(css`
-    font-size: ${rem(12)};
-  `)}
 `;

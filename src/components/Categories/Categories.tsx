@@ -35,14 +35,7 @@ const Wrapper = styled.section`
 
 const ContentWrapper = styled.div`
   text-align: center;
-  margin: 0 auto;
   width: 100%;
-  ${tablet(css`
-    width: 80%;
-  `)}
-  ${wide(css`
-    width: 60%;
-  `)}
   margin-bottom: ${space(3)};
 `;
 

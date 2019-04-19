@@ -1,6 +1,5 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import { Flex } from "primithemes";
 import { Banner } from "../components/Banner";
 import { Section, SectionHeader } from "../components/Section";
 import { Content } from "src/components/Content";
@@ -23,9 +22,7 @@ const ServicesTemplate: React.SFC<ServicesTemplateProps> = ({ data }) => {
       <Section>
         <SectionHeader title={service.frontmatter.subtitle} />
         <Container>
-          <Flex p={3} w={1}>
-            <Content dangerouslySetInnerHTML={{ __html: service.html }} />
-          </Flex>
+          <Content dangerouslySetInnerHTML={{ __html: service.html }} />
         </Container>
       </Section>
     </>

@@ -1,8 +1,10 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import styled, { css } from "styled-components";
+import { radius, shadow, space, color } from "src/theme";
+import { desktop } from "src/theme/media";
 import { Container } from "../components/Container";
-import { Trafalgar, LongPrimer } from "src/components/Text";
+import { trafalgar, longPrimer } from "src/theme/typography";
 import { Phone } from "styled-icons/material/Phone";
 import { Email } from "styled-icons/material/Email";
 import { Home } from "styled-icons/material/Home";
@@ -23,7 +25,6 @@ interface ContactNode {
 
 const icon = css`
   flex-shrink: 0;
-  border-color: ${props => props.theme.colors.divider.main};
 `;
 
 const PhoneIcon = styled(Phone)`
@@ -43,9 +44,9 @@ const ContactGroup = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  ${props => props.theme.devices[2]} {
+  ${desktop(css`
     flex-direction: row;
-  }
+  `)}
 `;
 
 const ContactItem = styled.div`
@@ -57,28 +58,31 @@ const ContactItem = styled.div`
 
 const Header = styled.div`
   width: 100%;
-  background: ${props => props.theme.colors.divider.light};
-  padding: ${props => props.theme.sizes[3]};
+  background: ${color("divider.light")};
+  padding: ${space(3)};
   text-align: center;
 `;
 
-const Title = styled(Trafalgar)``;
+const Title = styled.h2`
+  ${trafalgar};
+  margin-bottom: 0;
+`;
 
 const Body = styled.div`
-  padding: ${props => props.theme.sizes[3]};
+  padding: ${space(3)};
   display: flex;
   justify-content: center;
 `;
 
 const Info = styled.div`
-  margin: ${props => props.theme.sizes[3]};
-  padding-left: ${props => props.theme.sizes[3]};
-  border-left: ${props => props.theme.borders[1]};
-  border-color: ${props => props.theme.colors.divider.light};
+  margin: ${space(3)};
+  padding-left: ${space(3)};
+  border-left: 1px solid ${color("divider.main")};
 `;
 
-const P = styled(LongPrimer)`
-  color: ${props => props.theme.colors.text.dark};
+const P = styled.p`
+  ${longPrimer};
+  margin-bottom: 0;
 `;
 
 export interface Props {
@@ -100,13 +104,13 @@ const ContactCard = styled.div`
   border-radius: 0;
   box-shadow: 0;
   overflow: hidden;
-  color: ${props => props.theme.colors.text.dark};
-  margin: ${props => props.theme.sizes[4]} 0;
+  color: ${color("text.dark")};
+  margin: ${space(4)} 0;
   ${props => props.theme.devices[1]} {
-    border-radius: ${props => props.theme.radii[2]};
-    box-shadow: ${props => props.theme.shadows[1]};
-    margin-left: ${props => props.theme.sizes[3]};
-    margin-right: ${props => props.theme.sizes[3]};
+    border-radius: ${radius(2)};
+    box-shadow: ${shadow(1)};
+    margin-left: ${space(3)};
+    margin-right: ${space(3)};
   }
 `;
 
