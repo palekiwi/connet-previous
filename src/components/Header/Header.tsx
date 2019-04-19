@@ -7,13 +7,13 @@ import { weight, color, space, shadow } from "src/theme";
 import { desktop, tablet } from "src/theme/media";
 import { Link } from "src/components/Link";
 import { Logo } from "src/components/Logo";
-import { TopBar } from "./TopBar";
 
-const Wrapper = styled.div`
+const Wrapper = styled.nav`
   background: ${color("primary.main")};
   box-shadow: ${shadow(1)};
   z-index: 5;
-  position: fixed;
+  position: sticky;
+  top: 0px;
   width: 100%;
 `;
 
@@ -94,50 +94,37 @@ interface HeaderProps {
   logo?: any;
   title: React.ReactNode;
   navItems: { to: string; label: React.ReactNode }[];
-  topbar?: boolean;
-  phone: string;
 }
 
-const topbarHeight = 30;
-
-export const Header: React.SFC<HeaderProps> = ({
-  logo,
-  title,
-  navItems,
-  topbar,
-  phone,
-}) => {
+export const Header: React.SFC<HeaderProps> = ({ logo, title, navItems }) => {
   const { show, open, close } = useToggle();
   return (
-    <nav>
-      {topbar && <TopBar phone={phone} height={topbarHeight} />}
-      <Wrapper>
-        <Inner>
-          <Brand to="/">
-            <Logo variant="light" width={60} opacity={1} />
-            <BrandName>{title}</BrandName>
-          </Brand>
-          <Nav>
-            <NavItems>
-              {navItems.map(x => (
-                <NavItem to={x.to} key={x.to}>
-                  {x.label}
-                </NavItem>
-              ))}
-            </NavItems>
-            <Trigger>
-              <DrawerMenu
-                show={show}
-                open={open}
-                close={close}
-                title={title}
-                navItems={navItems}
-                logo={logo}
-              />
-            </Trigger>
-          </Nav>
-        </Inner>
-      </Wrapper>
-    </nav>
+    <Wrapper>
+      <Inner>
+        <Brand to="/">
+          <Logo variant="light" width={60} opacity={1} />
+          <BrandName>{title}</BrandName>
+        </Brand>
+        <Nav>
+          <NavItems>
+            {navItems.map(x => (
+              <NavItem to={x.to} key={x.to}>
+                {x.label}
+              </NavItem>
+            ))}
+          </NavItems>
+          <Trigger>
+            <DrawerMenu
+              show={show}
+              open={open}
+              close={close}
+              title={title}
+              navItems={navItems}
+              logo={logo}
+            />
+          </Trigger>
+        </Nav>
+      </Inner>
+    </Wrapper>
   );
 };

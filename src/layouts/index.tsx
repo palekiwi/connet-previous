@@ -25,6 +25,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     overflow-y: scroll;
+    overflow-x: hidden;
     height: 100%;
     font-family: ${fonts.sans};
   }
@@ -36,13 +37,11 @@ const GlobalStyle = createGlobalStyle`
 
 const Root = styled.div`
   position: relative;
-  overflow-x: hidden;
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
   min-height: 100vh;
 `;
 
@@ -161,7 +160,6 @@ export const Layout: React.SFC<Props> = ({ children, ...props }) => {
                     title={settings.node.frontmatter.title}
                     navItems={nav}
                     logo={null}
-                    phone={settings.node.frontmatter.contacts[0].phone}
                   />
                   <Main>{children}</Main>
                   <Footer

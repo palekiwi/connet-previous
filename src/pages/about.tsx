@@ -103,7 +103,12 @@ const AboutTemplate: React.SFC<AboutTemplateProps> = ({ data }) => {
             </ContentWrapper>
             <Links>
               {services.edges.map(({ node }, i) => (
-                <Button to={node.fields.slug} contained variant="primary">
+                <Button
+                  key={i}
+                  to={node.fields.slug}
+                  contained
+                  variant="primary"
+                >
                   {node.frontmatter.title}
                 </Button>
               ))}
