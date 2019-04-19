@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
 import { useTransition } from "react-spring";
-import {
-  enableBodyScroll,
-  disableBodyScroll,
-  BodyScrollOptions,
-} from "body-scroll-lock";
 
 export const useToggle = () => {
   const [show, set] = useState(false);
@@ -30,17 +25,8 @@ export const useKeyDown = (show: boolean, close: () => void) => {
   }, [show]);
 };
 
-// const useDisableBodyScroll = (show: boolean) => {
-//   const options: BodyScrollOptions = { reserveScrollBarGap: true };
-//   useEffect(() => {
-//     if (show) disableBodyScroll(document.body, options);
-//     else enableBodyScroll(document.body);
-//   }, [show]);
-// };
-
 export const useDrawer = () => {
   const { show, open, close } = useToggle();
-  //useDisableBodyScroll(show);
   useKeyDown(show, close);
   return { show, open, close };
 };

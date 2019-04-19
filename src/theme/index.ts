@@ -42,6 +42,7 @@ export const space = (n: number) => spaces[n];
 export const shadow = (n: number) => shadows[n];
 export const lineHeight = (n: number) => lineHeights[n];
 export const size = (n: number) => fontSizes[n];
+export const radius = (n: number) => radii[n];
 export const weight = (s: "thin" | "normal" | "bold") => fontWeights[s];
 
 const f = {

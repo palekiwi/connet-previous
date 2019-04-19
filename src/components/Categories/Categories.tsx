@@ -1,8 +1,12 @@
 import * as React from "react";
-import { Image } from "../Image";
-import { Button } from "../Button";
-import { Box, Card, Flex, Text } from "primithemes";
-import { Container } from "../Container";
+import { Image } from "src/components/Image";
+import { Button } from "src/components/Button";
+import styled from "styled-components";
+import { weight, space, color, radius, shadow } from "src/theme";
+import { Container } from "src/components/Container";
+import { Tiles, Tile } from "src/components/Tiles";
+import { greatPrimer, longPrimer } from "src/theme/typography";
+
 import { Content } from "src/components/Content";
 import { FadeIn } from "../Reveal";
 
@@ -24,6 +28,42 @@ type Props = {
   gradient?: string;
 };
 
+const Wrapper = styled.div`
+  padding: ${space(4)} 0;
+`;
+
+const Card = styled.div`
+  display: flex;
+  overflow: hidden;
+  border-radius: ${radius(2)};
+  width: 100%;
+  height: 100%;
+  box-shadow: ${shadow(1)};
+  flex-direction: column;
+  background: ${color("background.light")};
+`;
+
+const CardContent = styled.div`
+  flex-grow: 1;
+  padding: ${space(3)};
+`;
+
+const Title = styled.h3`
+  ${greatPrimer};
+  color: ${color("primary.main")};
+  font-weight: ${weight("bold")};
+  margin-bottom: ${space(1)};
+`;
+
+const Subtitle = styled.p`
+  ${longPrimer};
+  margin-bottom: 0;
+`;
+
+const Actions = styled.div`
+  padding: ${space(3)};
+`;
+
 const Categories: React.SFC<Props> = ({
   image,
   gradient,
@@ -33,63 +73,38 @@ const Categories: React.SFC<Props> = ({
   body,
   categoryLinks,
 }) => (
-  <Box my={3}>
+  <Wrapper>
     {markdown && (
       <Container>
         <Content
-          my={4}
-          w={[1, 1, 3 / 4, 2 / 3]}
-          mx="auto"
-          px={[3, 3, 0]}
           dangerouslySetInnerHTML={{ __html: markdown }}
           style={{ textAlign: "center" }}
         />
       </Container>
     )}
     <Container>
-      <Flex p={2} flexWrap="wrap">
+      <Tiles gutter={3}>
         {categoryLinks.map((x, i) => (
-          <Flex key={i} w={[1, 1 / 2, 1 / 2, 1 / 4]} p={2}>
-            <FadeIn once style={{ width: "100%" }}>
-              <Card
-                radius={2}
-                w={1}
-                key={x.to}
-                shadow={1}
-                flexDirection="column"
-                bg="background.light"
-                style={{ height: "100%" }}
-              >
-                <Flex flexDirection="column" style={{ height: "100%" }}>
-                  <Image style={{ height: 140 }} fluid={x.image} />
-                  <Box m={3} style={{ flexGrow: 1 }}>
-                    <Text
-                      is="h3"
-                      color="primary.main"
-                      fontWeight={4}
-                      fontSize={3}
-                    >
-                      {x.label}
-                    </Text>
-                    {x.text && (
-                      <Text mt={2} is="p">
-                        {x.text}
-                      </Text>
-                    )}
-                  </Box>
-                  <Flex m={3}>
-                    <Button to={x.to} outlined>
-                      {x.buttonText}
-                    </Button>
-                  </Flex>
-                </Flex>
+          <Tile key={i} w={[1, 1 / 2, 1 / 4]}>
+            <FadeIn once style={{ width: "100%", height: "100%" }}>
+              <Card key={x.to}>
+                <Image style={{ height: 140 }} fluid={x.image} />
+                <CardContent>
+                  <Title>{x.label}</Title>
+                  <Subtitle>{x.text}</Subtitle>
+                </CardContent>
+                <Actions>
+                  <Button to={x.to} outlined>
+                    {x.buttonText}
+                  </Button>
+                </Actions>
               </Card>
             </FadeIn>
-          </Flex>
+          </Tile>
         ))}
-      </Flex>
+      </Tiles>
     </Container>
-  </Box>
+  </Wrapper>
 );
 
 export { Categories };

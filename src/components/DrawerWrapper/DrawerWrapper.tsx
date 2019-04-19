@@ -1,6 +1,6 @@
 import * as React from "react";
-import { styled } from "primithemes";
 import { DrawerOverlay } from "./DrawerOverlay";
+import styled from "styled-components";
 import { Drawer } from "./Drawer";
 
 const StyledWrapper = styled.div`

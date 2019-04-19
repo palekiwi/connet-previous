@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Menu } from "styled-icons/material/Menu";
 import { Button } from "../Button";
-import { styled } from "primithemes";
+import styled from "styled-components";
 
 const Icon = styled(Menu)``;
 

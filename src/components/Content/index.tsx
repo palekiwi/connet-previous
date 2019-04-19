@@ -1,8 +1,8 @@
-import { styled, Box } from "primithemes";
+import styled from "styled-components";
 import { weight, color } from "src/theme";
 import { trafalgar, paragon, bodyCopy } from "src/theme/typography";
 
-export const Content = styled(Box)`
+export const Content = styled.div`
   width: 100%;
   overflow: auto;
   box-sizing: border-box;

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Close } from "styled-icons/material/Close";
-import { Button } from "../Button";
-import { styled } from "primithemes";
+import styled from "styled-components";
+import { Button } from "src/components/Button";
 
 const Icon = styled(Close)``;
 

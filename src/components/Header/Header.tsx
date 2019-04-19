@@ -4,9 +4,8 @@ import styled, { css } from "styled-components";
 import { useToggle } from "src/hooks";
 import { greatPrimer } from "src/theme/typography";
 import { weight, color, space, shadow } from "src/theme";
-import { desktop } from "src/theme/media";
+import { desktop, tablet } from "src/theme/media";
 import { Link } from "src/components/Link";
-import { Container } from "src/components/Container";
 import { Logo } from "src/components/Logo";
 import { TopBar } from "./TopBar";
 
@@ -68,7 +67,7 @@ export const Brand = styled(Link)`
 
 export const BrandName = styled.div`
   display: none;
-  ${desktop(css`
+  ${tablet(css`
     ${greatPrimer};
     display: block;
     margin-left: ${space(3)};

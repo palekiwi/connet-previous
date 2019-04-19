@@ -1,6 +1,6 @@
 import * as React from "react";
 import { animated } from "react-spring";
-import { styled } from "primithemes";
+import styled from "styled-components";
 import { useOverlay } from "./drawerHooks";
 
 interface Props {
