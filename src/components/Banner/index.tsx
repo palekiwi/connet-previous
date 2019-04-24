@@ -25,7 +25,7 @@ const Subtitle = styled.h4`
   margin-top: ${space(3)}
 `;
 
-interface BannerProps {
+export interface BannerProps {
   title: React.ReactNode;
   subtitle?: React.ReactNode;
   image: any;
@@ -42,4 +42,4 @@ const Banner: React.SFC<BannerProps> = props => {
   );
 };
 
-export { Banner, BannerProps };
+export { Banner };

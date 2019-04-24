@@ -4,7 +4,7 @@ import { radius, space, color } from "src/theme";
 
 import { Link } from "../../i18n";
 
-interface ButtonProps {
+export interface ButtonProps {
   to?: string;
   variant?: "primary" | "secondary" | "white";
   contained?: boolean;
@@ -14,7 +14,6 @@ interface ButtonProps {
   large?: boolean;
   style?: any;
   onClick?(): void;
-  type?: string;
   activeClassName?: string;
 }
 
@@ -205,4 +204,4 @@ const Button = styled(ButtonLink)<ButtonProps>`
   ${props => props.round && round}
 `;
 
-export { Button, ButtonProps };
+export { Button };

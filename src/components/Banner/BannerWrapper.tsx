@@ -57,4 +57,4 @@ const BannerWrapper: React.SFC<BannerProps> = ({ image, children }) => {
   );
 };
 
-export { BannerWrapper, BannerProps };
+export { BannerWrapper };

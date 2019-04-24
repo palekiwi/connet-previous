@@ -66,6 +66,6 @@ const defaultTheme = {
   f,
 };
 
-type Theme = typeof defaultTheme;
+export type Theme = typeof defaultTheme;
 
-export { defaultTheme, Scale, Theme };
+export { defaultTheme };

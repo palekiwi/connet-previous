@@ -12,7 +12,7 @@ import {
   longPrimer,
 } from "src/theme/typography";
 
-interface TimelineItem {
+export interface TimelineItem {
   node: {
     frontmatter: {
       date: React.ReactNode;
@@ -107,4 +107,4 @@ const Timeline: React.SFC<Props> = ({ title, subtitle, items }) => (
   </Section>
 );
 
-export { Timeline, TimelineItem };
+export { Timeline };

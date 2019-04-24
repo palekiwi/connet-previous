@@ -58,4 +58,4 @@ const AboutSummary: React.SFC<AboutSummaryProps> = ({
   );
 };
 
-export { AboutSummary, AboutSummaryProps, Highlight };
+export { AboutSummary, Highlight };

@@ -3,7 +3,7 @@ const localeData = [
   ...require("react-intl/locale-data/zh"),
 ];
 
-interface Language {
+export interface Language {
   name: string;
   code: string;
 }
@@ -13,4 +13,4 @@ const languages: Language[] = [
   //{ code: "zh", name: "中文" },
 ];
 
-export { Language, languages, localeData };
+export { languages, localeData };
