@@ -2,8 +2,6 @@ import { shadows } from "./shadows";
 import { colors } from "./colors";
 import { unit, rem, mapToRem } from "./utils";
 
-type Scale = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-
 const sizes = mapToRem([0, 4, 8, 16, 32, 64, 128, 256, 512]);
 const spaces = mapToRem([0, 4, 8, 16, 32, 64, 128, 256, 512]);
 const fontSizes = mapToRem([12, 14, 15, 16, 18, 20, 24, 26, 28, 32, 36, 44]);
@@ -44,6 +42,8 @@ export const lineHeight = (n: number) => lineHeights[n];
 export const size = (n: number) => fontSizes[n];
 export const radius = (n: number) => radii[n];
 export const weight = (s: "thin" | "normal" | "bold") => fontWeights[s];
+
+export const transition = "400ms cubic-bezier(0.08, 0.52, 0.52, 1)";
 
 const f = {
   color,
