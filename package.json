@@ -56,7 +56,9 @@
     "start": "gatsby develop --host 192.168.0.17 --port 8000",
     "develop": "gatsby develop",
     "format": "prettier --write '**/*.js'",
-    "test": "jest"
+    "test": "jest",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
     "@types/jest": "^23.3.14",
@@ -73,7 +75,13 @@
     "react-intl-translations-manager": "^5.0.3",
     "source-map-support": "^0.5.12",
     "ts-jest": "^23.10.5",
-    "ts-node": "^7.0.1"
+    "ts-node": "^7.0.1",
+    "@storybook/react": "^5.0.11",
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-links": "^5.0.11",
+    "@storybook/addons": "^5.0.11",
+    "@babel/core": "^7.4.4",
+    "babel-loader": "^8.0.6"
   },
   "resolutions": {
     "@types/react": "16.8.8"
